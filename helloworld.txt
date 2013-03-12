@@ -3,3 +3,4 @@ just writing some more lines here
 to see how the repo will react when i commit it
 
 +testing new account
+Adding collaborator: https://help.github.com/articles/how-do-i-add-a-collaborator
