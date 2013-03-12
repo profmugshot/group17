@@ -1,6 +1,9 @@
+/////////////////
+// Installation
+/////////////////
 [For windows:]
 Precompiled installers can be found here:
-http://www.lfd.uci.edu/~gohlke/pythonlibs/
+- http://www.lfd.uci.edu/~gohlke/pythonlibs/
 
 Install:
 - python-2.7 32bit
@@ -11,3 +14,9 @@ Install:
 
 [For Linux:]
 sudo apt-get install python python-opencv python-pygame python-imaging
+
+/////////////////
+// Documentation
+/////////////////
+Official doc for OCV Facial Reconition:
+- http://docs.opencv.org/trunk/modules/contrib/doc/facerec/
