@@ -9,6 +9,8 @@ import os
 import re
 import urllib2
 import MySQLdb
+import rel
+from doc import doc #doc obj
 
 docDB={}
 #mysql connector
@@ -26,7 +28,7 @@ if len(cur.fetchall())==0: #database doesn't exist, needs to be created
 	cur.execute( "create table docs ("+
 		     "docID VARCHAR(100) NOT NULL PRIMARY KEY,"+
 		     "title VARCHAR(100),"+
-		     "html TEXT,"+
+		     "html LONGTEXT,"+
 		     "lastmodified TIMESTAMP(6) );"
 		     );
 	db.commit()
@@ -34,23 +36,6 @@ if len(cur.fetchall())==0: #database doesn't exist, needs to be created
 	db.commit()
 	assert len(cur.fetchall())!=0, 'database fail to create'
 
-
-
-class doc(object):
-	def __init__(self, docID, title, html):
-		self.docID = docID
-		self.title = title
-		self.html = html
-	def setHTML(self, html): #gets the entire HTML doc
-		self.html = html
-	def getHTML(self):
-		return self.html
-	def getTitle(self):
-		return self.title
-	def getURL(self):
-		return self.url	
-	def getDocID(self):
-		return self.docID
 
 #clean up formatting for web page title
 #gets rid of newlines and extra spaces
@@ -132,7 +117,7 @@ def extractInternalLinks(parentSoup):
 			page = filter(visible, text)
 			page = [token.strip(' ').lower() for token in page]
 			
-			relevance = checkRelevance(page)
+			relevance = rel.check(page)
 			print "Page with URL {0} is {1}.".format(link, "relevant" if relevance else "not relevant")
 			if relevance:
 				links.append(link)
@@ -146,38 +131,6 @@ def extractInternalLinks(parentSoup):
 		#		links.append(link)
 	return links
 
-def checkRelevance(page):
-	threshold = 10;
-	#15 keywords
-	keyWords = ['grad',
-			'graduate',
-			'students',
-			'student',
-			'research',
-			'teaching',
-			'contact',
-			'degrees',
-			'degree',
-			'supervised',
-			'supervise',
-			'publications',
-			'publication',
-			'current research',
-			'graduate students',
-			'graduate student',
-			'selected publications',
-			'ph.d',
-			'm.sc.']
-	count = 0
-	for token in keyWords:		
-		if token in page:		
-			count=count+1
-	temp = float(100)*float((float(count)/float(len(keyWords))))	
-	
-	if temp>threshold:
-		return True 
-	else:
-		return False 
 
 #ignore for now
 #can be used later for index generation
@@ -201,7 +154,7 @@ def test():
 	page = filter(visible, text)
 	page = [token.strip(' ').lower() for token in page]
 	print page
-	print checkRelevance(page)
+	print rel.check(page)
 #test()
 
 
