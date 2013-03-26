@@ -19,13 +19,16 @@ def check(page):
 			'graduate student',
 			'selected publications',
 			'ph.d',
-			'm.sc.']
+			'phd',
+			'msc',
+			'm.sc.',
+			'dissertations',
+			'thesis']
 	count = 0
-	for token in keyWords:		
-		if token in page:		
+	for token in keyWords:	
+		if token in page:
 			count=count+1
 	temp = float(100)*float((float(count)/float(len(keyWords))))	
-	
 	if temp>threshold:
 		return True 
 	else:

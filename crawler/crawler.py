@@ -9,9 +9,11 @@ import os
 import re
 import urllib2
 import MySQLdb
-import rel
+import rel #relevance check
 from doc import doc #doc obj
+from urlparse import urljoin
 
+##########db connection############
 docDB={}
 #mysql connector
 db = MySQLdb.connect(host="localhost", # your host, usually localhost
@@ -35,6 +37,8 @@ if len(cur.fetchall())==0: #database doesn't exist, needs to be created
 	cur.execute('SHOW DATABASES LIKE "storage";')
 	db.commit()
 	assert len(cur.fetchall())!=0, 'database fail to create'
+######end db connection########
+
 
 
 #clean up formatting for web page title
@@ -68,7 +72,7 @@ def crawl():
 		html = urllib2.urlopen(url)
 		soup = BeautifulSoup(html)
 			
-		tempList = extractInternalLinks(soup)	
+		tempList = extractInternalLinks(url, soup)	
 		#seedURL = seedURL + tempList
 				
 
@@ -98,12 +102,13 @@ def crawl():
 		#print page
 		seedURL = seedURL + tempList
 
-def extractInternalLinks(parentSoup):
+def extractInternalLinks(seedURL, parentSoup):
 	links=[]
 
 	for link in parentSoup.find_all('a'):
 		link = link.get('href')
 		try:
+			link = urljoin(seedURL, link)
 			if not('cs.sfu.ca' in link.lower()):
 				continue
 			try:
@@ -116,19 +121,15 @@ def extractInternalLinks(parentSoup):
 			text = parsedPage.findAll(text=True)
 			page = filter(visible, text)
 			page = [token.strip(' ').lower() for token in page]
-			
+			page = [token.split(' ') for token in page]
+			page = list(itertools.chain.from_iterable(page))
+			page = [re.sub(',*:*;*-*', '', token) for token in page]
 			relevance = rel.check(page)
 			print "Page with URL {0} is {1}.".format(link, "relevant" if relevance else "not relevant")
 			if relevance:
 				links.append(link)
 		except:
 			print 'empty link'
-			
-		#	if link.startswith('/'): #deals with internal links eg: /people/faculty.html
-		#		link = 'http://www.cs.sfu.ca'+link.get('href')
-		#		links.append(link)
-		#	elif 'cs.sfu.ca' in link:
-		#		links.append(link)
 	return links
 
 
