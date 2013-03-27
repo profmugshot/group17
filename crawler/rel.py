@@ -10,6 +10,7 @@ def check(page):
 			'contact',
 			'degrees',
 			'degree',
+                        'professor',
 			'supervised',
 			'supervise',
 			'publications',
@@ -21,6 +22,7 @@ def check(page):
 			'ph.d',
 			'phd',
 			'msc',
+                        'courses',
 			'm.sc.',
 			'dissertations',
 			'thesis']

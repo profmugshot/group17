@@ -12,6 +12,9 @@ import MySQLdb
 import rel #relevance check
 from doc import doc #doc obj
 from urlparse import urljoin
+from sets import Set
+import itertools
+
 
 ##########db connection############
 docDB={}
@@ -37,6 +40,10 @@ if len(cur.fetchall())==0: #database doesn't exist, needs to be created
 	cur.execute('SHOW DATABASES LIKE "storage";')
 	db.commit()
 	assert len(cur.fetchall())!=0, 'database fail to create'
+
+	sql = 'insert into docs (docID, title, html) values ("%s", "%s", "%s");'
+	cur.execute(sql, ('http://www.cs.sfu.ca/', 'main cs sfu page', 'Nill') )
+	db.commit()
 ######end db connection########
 
 
@@ -58,15 +65,20 @@ def visible(element):
 	return True
 
 def crawl():
-	seedURL = ['http://www.cs.sfu.ca/people/faculty.html']
+	#seedURL = ['http://www.cs.sfu.ca/people/faculty.html']
+	seedURL = ['http://www.cs.sfu.ca/~kabanets/']
 	parsedURL = []
 	while len(seedURL)!=0:
+		#if len(parsedURL)>30:
+		#	break;
+		print '###### start iterate ######'
 		url = seedURL.pop(0) #gets first element
-		if (url in parsedURL):
-			print 'URL {0} has been visited'.format(url)
-			continue
-		else:
-			parsedURL.append(url)
+		parsedURL.append(url)
+		#if (url in parsedURL):
+		#	print 'URL {0} has been visited'.format(url)
+		#	continue
+		#else:
+		#	parsedURL.append(url)
 		print 'Reading URL %s', url
 		print 'Parsing seed URL'
 		html = urllib2.urlopen(url)
@@ -80,16 +92,19 @@ def crawl():
 		#docID = randint(10, 9999999) #random id for docID
 		docID = url
 		docObj = doc(docID, pageTitle, html)
-	
+
 		#if docID not in docDB:#check if doc ID is unique
 		#	docDB[docID]=docObj
 		#else:
 		#	docID = randint(9999999,9999999999)#pick something else
 		#	docDB[docID]=docObj	
 		#docDB[docID].setHTML(soup)
-		sql = 'insert into docs (docID, title, html) values ("%s", "%s", "%s");'
-		cur.execute(sql, (docID, pageTitle, soup) )
-	
+		try:
+			sql = 'insert into docs (docID, title, html) values ("%s", "%s", "%s");'
+			cur.execute(sql, (docID, pageTitle, soup) )
+		except:
+			print 'duplicate entries'
+
 		
 		#print clean(docDB[docID].getTitle())
 		#print docDB[docID].getHTML()
@@ -97,10 +112,18 @@ def crawl():
 			db.commit()
 		except:
 			print 'duplicates. check sql'
-		#text = soup.findAll(text=True)
-		#page = filter(visible, text)
-		#print page
-		seedURL = seedURL + tempList
+		parsedSet= Set(parsedURL)
+		seedSet = Set(seedURL)
+		tempSet = Set(tempList) #templist = extracted internal links
+
+		toBeAddedURL = tempSet.difference(parsedSet) #get all urls in tempSet, but not in parsedSet
+		
+		seedSet = seedSet.union(toBeAddedURL)
+		seedURL = list(seedSet)
+		print 'length of seed URL ', len(seedURL)
+		print 'length of parsedURL ', len(list(tempSet))
+		
+		print '#####ending iteration####'
 
 def extractInternalLinks(seedURL, parentSoup):
 	links=[]
@@ -125,7 +148,7 @@ def extractInternalLinks(seedURL, parentSoup):
 			page = list(itertools.chain.from_iterable(page))
 			page = [re.sub(',*:*;*-*', '', token) for token in page]
 			relevance = rel.check(page)
-			print "Page with URL {0} is {1}.".format(link, "relevant" if relevance else "not relevant")
+			#print "Page with URL {0} is {1}.".format(link, "relevant" if relevance else "not relevant")
 			if relevance:
 				links.append(link)
 		except:
