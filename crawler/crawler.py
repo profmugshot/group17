@@ -24,7 +24,6 @@ db = MySQLdb.connect(host="localhost", # your host, usually localhost
 		      passwd="test", # your password
 		      db="storage") # name of the data base
 cur = db.cursor()
-#cur.execute('SHOW DATABASES LIKE "storage";')
 cur.execute('SHOW TABLES;')
 db.commit()
 print "checking database"
@@ -41,6 +40,7 @@ if len(cur.fetchall())==0: #database doesn't exist, needs to be created
 	db.commit()
 	assert len(cur.fetchall())!=0, 'database fail to create'
 
+	#this is to filter out the main cs.sfu.ca page. Reduces internal links parsing
 	sql = 'insert into docs (docID, title, html) values ("%s", "%s", "%s");'
 	cur.execute(sql, ('http://www.cs.sfu.ca/', 'main cs sfu page', 'Nill') )
 	db.commit()
@@ -60,63 +60,42 @@ def visible(element):
 		return False
 	elif re.match('\n', unicode(element)):
 		return False
-	#elif re110G.match(' ', unicode(element)):
-	#	return False
 	return True
 
 def crawl():
-	#seedURL = ['http://www.cs.sfu.ca/people/faculty.html']
-	seedURL = ['http://www.cs.sfu.ca/~kabanets/']
+	seedURL = ['http://www.cs.sfu.ca/people/faculty.html']
 	parsedURL = []
 	while len(seedURL)!=0:
-		#if len(parsedURL)>30:
-		#	break;
 		print '###### start iterate ######'
 		url = seedURL.pop(0) #gets first element
 		parsedURL.append(url)
-		#if (url in parsedURL):
-		#	print 'URL {0} has been visited'.format(url)
-		#	continue
-		#else:
-		#	parsedURL.append(url)
 		print 'Reading URL %s', url
 		print 'Parsing seed URL'
 		html = urllib2.urlopen(url)
 		soup = BeautifulSoup(html)
 			
-		tempList = extractInternalLinks(url, soup)	
-		#seedURL = seedURL + tempList
-				
+		extractedLinks = extractInternalLinks(url, soup)	
 
 		pageTitle = clean(soup.title.string)
-		#docID = randint(10, 9999999) #random id for docID
+
 		docID = url
 		docObj = doc(docID, pageTitle, html)
 
-		#if docID not in docDB:#check if doc ID is unique
-		#	docDB[docID]=docObj
-		#else:
-		#	docID = randint(9999999,9999999999)#pick something else
-		#	docDB[docID]=docObj	
-		#docDB[docID].setHTML(soup)
 		try:
 			sql = 'insert into docs (docID, title, html) values ("%s", "%s", "%s");'
 			cur.execute(sql, (docID, pageTitle, soup) )
 		except:
 			print 'duplicate entries'
-
-		
-		#print clean(docDB[docID].getTitle())
-		#print docDB[docID].getHTML()
 		try:
 			db.commit()
 		except:
 			print 'duplicates. check sql'
 		parsedSet= Set(parsedURL)
 		seedSet = Set(seedURL)
-		tempSet = Set(tempList) #templist = extracted internal links
-
-		toBeAddedURL = tempSet.difference(parsedSet) #get all urls in tempSet, but not in parsedSet
+		tempSet = Set(extractedLinks)
+		
+		#get all urls in tempSet that is not in parsedSet (tempSet - parsedSet)
+		toBeAddedURL = tempSet.difference(parsedSet) 
 		
 		seedSet = seedSet.union(toBeAddedURL)
 		seedURL = list(seedSet)
