@@ -58,10 +58,8 @@ def createIndexes():
 		for token in page:
 ##			if debug>3:
 ##				break;
-			print token
+			#print token
 			posList = [pos]
-		
-
 			sql = 'select pos from indexterms where docID=%s AND terms=%s'
 			cur.execute(sql, (html[0], token))
 			db.commit()
@@ -79,7 +77,6 @@ def createIndexes():
 				db.commit()
 				
 				posList = convertTupleToList(cur.fetchone())
-				#print posList
 				posList.append(pos)
 				posList = convertListToStr(posList)
 				sql = 'update indexterms set pos=%s where docID=%s AND terms=%s;'
@@ -108,7 +105,19 @@ def clean(page):
 	page = [token.strip('\t') for token in page]
 	page = [token.split(' ') for token in page]
 	page = list(itertools.chain.from_iterable(page))
-	page = [re.sub(',*:*;*-*[\n][*]*.*', '', token) for token in page]
+	
+	#page = [re.sub(',*:*;*-*[\n][*]*[.]*[,]*', '', token) for token in page]
+	#regex is an asshole and the three characters aren't being replaced. Fuck this shit
+	for i in range(0, len(page)):
+		page[i] = page[i].replace(',', '')
+		page[i] = page[i].replace('.', '')
+		page[i] = page[i].replace('`', '')
+		page[i] = page[i].replace(':', '')
+		page[i] = page[i].replace(';', '')
+		page[i] = page[i].replace('\t', '')
+		page[i] = page[i].replace('\n', '')
+		page[i] = page[i].replace(')', '')
+		page[i] = page[i].replace('(', '')
 	return page
 if __name__=="__main__":
 	createIndexes()
