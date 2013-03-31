@@ -41,7 +41,7 @@ if len(cur.fetchall())==0: #database doesn't exist, needs to be created
 	assert len(cur.fetchall())!=0, 'database fail to create'
 
 	#this is to filter out the main cs.sfu.ca page. Reduces internal links parsing
-	sql = 'insert into docs (docID, title, html) values ("%s", "%s", "%s");'
+	sql = 'insert into docs (docID, title, html) values (%s, %s, %s);'
 	cur.execute(sql, ('http://www.cs.sfu.ca/', 'main cs sfu page', 'Nill') )
 	db.commit()
 ######end db connection########
@@ -66,6 +66,8 @@ def crawl():
 	seedURL = ['http://www.cs.sfu.ca/people/faculty.html']
 	parsedURL = []
 	while len(seedURL)!=0:
+		if len(parsedURL)>20:
+			break;
 		print '###### start iterate ######'
 		url = seedURL.pop(0) #gets first element
 		parsedURL.append(url)
@@ -82,7 +84,7 @@ def crawl():
 		docObj = doc(docID, pageTitle, html)
 
 		try:
-			sql = 'insert into docs (docID, title, html) values ("%s", "%s", "%s");'
+			sql = 'insert into docs (docID, title, html) values (%s, %s, %s);'
 			cur.execute(sql, (docID, pageTitle, soup) )
 		except:
 			print 'duplicate entries'
