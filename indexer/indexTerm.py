@@ -20,7 +20,7 @@ db.commit()
 if len(cur.fetchall())==0:
 	print 'index term table does not exist, creating...'
 	cur.execute( "create table indexTerms ("+
-				 "terms VARCHAR(30) NOT NULL," +
+				 "terms VARCHAR(100) NOT NULL," +
 				 "docID VARCHAR(100) NOT NULL,"+
 				 "pos VARCHAR(9999) NOT NULL );"
 				 )
@@ -61,9 +61,12 @@ def createIndexes():
 			#print token
 			posList = [pos]
 			sql = 'select pos from indexterms where docID=%s AND terms=%s'
-			cur.execute(sql, (html[0], token))
-			db.commit()
-			
+			try:
+                                cur.execute(sql, (html[0], token))
+                                db.commit()
+                        except:
+                                print 'codec issue'
+			print token
 			if (cur.fetchone() is None): #doesn't exist, adding
 				print 'doesn\'t exist'
 				sql = 'insert into indexterms (terms, docID, pos) values (%s, %s, %s);' 
@@ -118,6 +121,8 @@ def clean(page):
 		page[i] = page[i].replace('\n', '')
 		page[i] = page[i].replace(')', '')
 		page[i] = page[i].replace('(', '')
+		page[i] = page[i].replace(']', '')
+		page[i] = page[i].replace('[', '')
 	return page
 if __name__=="__main__":
 	createIndexes()
