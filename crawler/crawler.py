@@ -66,14 +66,18 @@ def crawl():
 	seedURL = ['http://www.cs.sfu.ca/people/faculty.html']
 	parsedURL = []
 	while len(seedURL)!=0:
-		if len(parsedURL)>20:
-			break;
+##		if len(parsedURL)>20:
+##			break;
 		print '###### start iterate ######'
 		url = seedURL.pop(0) #gets first element
 		parsedURL.append(url)
 		print 'Reading URL %s', url
 		print 'Parsing seed URL'
-		html = urllib2.urlopen(url)
+		try:
+			html = urllib2.urlopen(url)
+		except:
+			print 'can\'t open url'
+			continue
 		soup = BeautifulSoup(html)
 			
 		extractedLinks = extractInternalLinks(url, soup)	

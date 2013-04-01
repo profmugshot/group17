@@ -20,7 +20,7 @@ db.commit()
 if len(cur.fetchall())==0:
 	print 'index term table does not exist, creating...'
 	cur.execute( "create table indexTerms ("+
-				 "terms VARCHAR(100) NOT NULL," +
+				 "terms VARCHAR(200) NOT NULL," +
 				 "docID VARCHAR(100) NOT NULL,"+
 				 "pos VARCHAR(9999) NOT NULL );"
 				 )
@@ -59,32 +59,38 @@ def createIndexes():
 ##			if debug>3:
 ##				break;
 			#print token
+			if len(token) > 200:
+				print 'token too long ', token
+				continue
 			posList = [pos]
 			sql = 'select pos from indexterms where docID=%s AND terms=%s'
 			try:
-                                cur.execute(sql, (html[0], token))
-                                db.commit()
-                        except:
-                                print 'codec issue'
+				cur.execute(sql, (html[0], token))
+				db.commit()
+			except:
+				print 'codec issue'
 			print token
-			if (cur.fetchone() is None): #doesn't exist, adding
-				print 'doesn\'t exist'
-				sql = 'insert into indexterms (terms, docID, pos) values (%s, %s, %s);' 
-				cur.execute(sql, (token, html[0], str(pos)) )
-				db.commit()
-			else:
-				print 'does exist'
-				#pos will be stored as '0,1,...,n'
-				sql = 'select pos from indexterms where docID=%s AND terms=%s;'
-				cur.execute(sql, (html[0],token))
-				db.commit()
-				
-				posList = convertTupleToList(cur.fetchone())
-				posList.append(pos)
-				posList = convertListToStr(posList)
-				sql = 'update indexterms set pos=%s where docID=%s AND terms=%s;'
-				cur.execute(sql, (posList, html[0], token))
-				db.commit()
+			try:
+				if (cur.fetchone() is None): #doesn't exist, adding
+					#print 'doesn\'t exist'
+					sql = 'insert into indexterms (terms, docID, pos) values (%s, %s, %s);' 
+					cur.execute(sql, (token, html[0], str(pos)) )
+					db.commit()
+				else:
+					#print 'does exist'
+					#pos will be stored as '0,1,...,n'
+					sql = 'select pos from indexterms where docID=%s AND terms=%s;'
+					cur.execute(sql, (html[0],token))
+					db.commit()
+					
+					posList = convertTupleToList(cur.fetchone())
+					posList.append(pos)
+					posList = convertListToStr(posList)
+					sql = 'update indexterms set pos=%s where docID=%s AND terms=%s;'
+					cur.execute(sql, (posList, html[0], token))
+					db.commit()
+			except:
+				print 'encoding issue', token
 			pos = pos + 1
 ##			debug = debug + 1
 ##		break;
@@ -92,17 +98,17 @@ def createIndexes():
 #pulls POS tuple from DB, and then convert it into an integer list so new pos can be appended
 #the data for pos is returned as a tuple ('0,..,n',) always, it expands the first element and nothing else
 def convertTupleToList(pos):
-        pos = pos[0].split(',')
-        #pos = list(pos)
-        #print pos
-        pos = [int(strNum) for strNum in pos]
-        return pos
+	pos = pos[0].split(',')
+	#pos = list(pos)
+	#print pos
+	pos = [int(strNum) for strNum in pos]
+	return pos
 
 def convertListToStr(pos):
-        pos = [str(intNum) for intNum in pos]
-        pos = ','.join(pos)
-        return pos
-        	
+	pos = [str(intNum) for intNum in pos]
+	pos = ','.join(pos)
+	return pos
+		
 def clean(page):
 	page = [token.strip(' ').lower() for token in page]
 	page = [token.strip('\t') for token in page]
