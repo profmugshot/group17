@@ -1,0 +1,227 @@
+body
+{
+	padding-top: 40px;
+}
+
+.search-box
+{
+	border-radius: 5px;
+	background-color: lightgrey;
+	height: 70px;
+}
+
+.search-result
+{
+  border-radius: 5px;
+  background-color: #F2F2F2;
+  border: 1px solid lightgrey;
+  padding-top:20px;
+  padding-bottom:20px;
+}
+
+.search-result .search-header
+{
+  padding-top:7px;
+  padding-bottom: 10px;
+}
+
+.search-result .search-header h2
+{
+  margin: 0;
+  line-height: normal;
+}
+
+.search-result .teach-image,
+.teacher-header-box .teach-image
+{
+  padding-left: 20px;
+}
+
+.search-result .ratings
+{
+  padding-top: 15px;
+  padding-right: 20px;
+}
+
+.search-box .typeahead
+{
+	margin-top: 0 !important;
+}
+
+.actually-pull-right
+{
+	float: right !important;
+}
+
+.search-box .sb-container
+{
+	padding: 20px;
+}
+
+.no-margin
+{
+	margin: 0;
+}
+
+.push-down-1
+{
+  padding-top: 20px;
+}
+
+.push-down-2
+{
+  padding-top: 40px;
+}
+
+.push-down-3
+{
+  padding-top: 60px;
+}
+
+.push-down-4
+{
+  padding-top: 80px;
+}
+
+.push-down-5
+{
+  padding-top: 100px;
+}
+
+.search-result img
+{
+  max-height: 140px;
+}
+
+.teacher-header-box
+{
+  border-radius: 5px;
+  background-color: #F2F2F2;
+  border: 1px solid lightgrey;
+  padding-top:20px;
+  padding-bottom:20px;
+}
+
+.teacher-info-box
+{
+  border-radius: 5px;
+  background-color: #F2F2F2;
+  border: 1px solid lightgrey;
+  padding:20px;
+}
+
+.teacher-cg-box
+{
+  border-radius: 5px;
+  background-color: #F2F2F2;
+  border: 1px solid lightgrey;
+  padding:20px;
+  height: 170px;
+}
+
+.teacher-header-box img
+{
+  max-height: 300px;
+}
+
+.teacher-header-box h2
+{
+  margin: 0;
+}
+
+.teacher-header-box .teach-info
+{
+  padding-left: 20px;
+}
+
+.teacher-header-box #position
+{
+  margin:0;
+}
+
+.news-box, .classes-box
+{
+  background-color: #F2F2F2;
+  border: 1px solid lightgrey;
+  height: 250px;
+  padding: 0px;
+}
+
+.scrollbox
+{
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.centerbox
+{
+  margin-top: 86px;
+}
+
+.centerbox2
+{
+  margin-top: 50px;
+}
+
+.classes-box .classnoline
+{
+  line-height: 250px;
+  margin: 0;
+}
+
+.rate-my-prof .in-box
+{
+  width: 82px;
+  margin-right: 20px;
+  padding-top:20px;
+  background-color: blue;
+  float:left;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.rate-my-prof strong
+{
+  font-size: 40px;
+  color: white;
+}
+
+.rate-my-prof p
+{
+  font-size: 11px;
+  color: white;
+}
+
+.rate-my-prof .ov-qu
+{
+  background-color: #fb717e;
+  border: 1px solid #F60018;
+}
+
+.rate-my-prof .help
+{
+  background-color: #ffad73;
+  border: 1px solid #FF6A00;
+}
+
+.rate-my-prof .clar
+{
+  background-color: #5dd0c0;
+  border: 1px solid #00A08A;
+}
+
+.rate-my-prof .ease
+{
+  background-color: #80ea69;
+  border: 1px solid #25D500;
+}
+
+.rate-my-prof .first
+{
+  margin-left: 10px;
+}
+
+.rate-my-prof .last
+{
+  margin-right: 10px;
+}
