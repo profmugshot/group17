@@ -78,12 +78,15 @@ def crawl():
 		except:
 			print 'can\'t open url'
 			continue
-		soup = BeautifulSoup(html)
-			
-		extractedLinks = extractInternalLinks(url, soup)	
-
-		pageTitle = clean(soup.title.string)
-
+		
+		soup = BeautifulSoup(html)			
+		try:			
+			extractedLinks = extractInternalLinks(url, soup)	
+			pageTitle = clean(soup.title.string)
+		except:
+			print 'cannot clean page title, likely a PDF, skipping doc'
+			continue
+		
 		docID = url
 		docObj = doc(docID, pageTitle, html)
 
