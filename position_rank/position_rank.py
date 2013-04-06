@@ -115,16 +115,6 @@ for docID in data:
 
         bucket_add(JIAN,the_bucket)
 
-
-
-
-##    cur.execute('select pos from indexterms where docID=%s and terms="pei";', docID)
-##    pei_data = cur.fetchall()
-##    print "this is pei data:"
-##    a = pei_data[0][0].split(',')
-##    PEI = [int(y) for y in a]
-##    print PEI
-
     print "\n"
     print "running bucket for docID: " + str(docID)
     print calculate_the_bucket(the_bucket,size_of_bucket);
