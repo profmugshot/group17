@@ -111,7 +111,7 @@ result = list(result)
 
 print len(result)
 for i in result:
-    print i
+    if DEBUG: print i
 
 for docID in result:
 
@@ -137,7 +137,7 @@ for docID in result:
 
     for aToken in query:
         if DEBUG: print "FOR THIS DOCID: "
-        print docID
+        if DEBUG: print docID
         sql='select pos from indexterms where terms=%s AND docID=%s;'
         cur.execute(sql, (aToken,docID[0]))
         db.commit()
@@ -145,7 +145,7 @@ for docID in result:
         if DEBUG: print "this is..." + aToken + " data."
         a = jian_data[0][0].split(',')
         JIAN = [int(y) for y in a]
-        print JIAN
+        if DEBUG: print JIAN
 
         bucket_add(JIAN,the_bucket)
 
