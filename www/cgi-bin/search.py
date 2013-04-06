@@ -152,9 +152,12 @@ for docID in result:
         bucket_add(JIAN,the_bucket)
 
     print "\n"
-    print "running bucket for docID: " + str(docID)
-    print "SCORE: "
-    print calculate_the_bucket(the_bucket,size_of_bucket);
+    #print "running bucket for docID: " + str(docID)
+    #print "SCORE: "
+    docID[1]  = calculate_the_bucket(the_bucket,size_of_bucket);
+    print docID[0]
+    print " scores: "
+    print docID[1]
         #print "result for bucket is... " + str(bucket(JIAN, PEI))
     print "</br>\n\n"
 
