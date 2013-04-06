@@ -135,6 +135,8 @@ for docID in result:
     
     the_bucket = bucket(size_of_bucket)
 
+    print "</br>"
+
     for aToken in query:
         if DEBUG: print "FOR THIS DOCID: "
         if DEBUG: print docID
@@ -154,7 +156,7 @@ for docID in result:
     print "SCORE: "
     print calculate_the_bucket(the_bucket,size_of_bucket);
         #print "result for bucket is... " + str(bucket(JIAN, PEI))
-    print "=======  ================================\n\n"
+    print "</br>\n\n"
 
 ##
 # Constructing variables to pass to HTML
