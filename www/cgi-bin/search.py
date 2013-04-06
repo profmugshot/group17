@@ -14,10 +14,11 @@ cgitb.enable()
 
 fs = cgi.FieldStorage()
 querys = fs.getlist("query")
-query = ",".join(querys)
+query = ""
+query = query.join(querys)
 
 var = {
-    'title': 'CS456 G17 Jinja2 - '+query
+    'title': 'CS456 G17 Jinja2 - '+query,
     'heading': 'Jinja Demo',
     'query': query
     }
