@@ -35,6 +35,10 @@
                 </a>
               </p>
             </div>
+            <p>{{resultLen}}</p>
+            {% for result in results %}
+              <li><a href="{{result}}">{{result}}</a></li>
+            {% endfor %}
         </div>
       </div>
   </div>
