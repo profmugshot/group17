@@ -21,6 +21,8 @@ cur = db.cursor()
 #============================================
 DEBUG = 0
 cgitb.enable()
+print "Content-type:text/html\r\n\r\n"
+
 ##
 # Setting JinJa Env.
 path=mod_locator.mod_path()
@@ -35,6 +37,8 @@ query = ",".join(querys)
 form = query.replace(","," ")
 query = query.strip(",")
 
+if DEBUG: print query
+
 ##
 # Retrieving from database
 tokenDocList = []
@@ -47,6 +51,10 @@ for token in query:
 
 result = set(tokenDocList[0]).intersection(*tokenDocList)
 result = list(result)
+
+print len(result)
+for i in result:
+    print i
 
 ##
 # Constructing variables to pass to HTML
@@ -61,13 +69,6 @@ var = {
 ##
 # Render HTML...
 template = env.get_template('search.html')
-print "Content-type:text/html\r\n\r\n"
 print template.render(var)
 
-##
-# Post scripts...
-if DEBUG: print query
 
-print len(result)
-for i in result:
-    print i
