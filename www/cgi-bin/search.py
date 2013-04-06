@@ -33,9 +33,7 @@ env = jj.Environment(loader=jj.FileSystemLoader(path+'/template'))
 # Getting html form POST
 fs = cgi.FieldStorage()
 querys = fs.getlist("query")
-query = ",".join(querys)
-form = query.replace(","," ")
-query = query.strip(",")
+query = querys[0].split(" ")
 
 if DEBUG: print query
 
@@ -59,9 +57,9 @@ for i in result:
 ##
 # Constructing variables to pass to HTML
 var = {
-    'title': 'CS456 G17 Jinja2 - '+query,
+    'title': 'CS456 G17 Jinja2 - '+querys[0],
     'heading': 'Jinja Demo',
-    'query': form,
+    'query': querys[0],
     'results': result,
     'resultLen':len(result)
     }
