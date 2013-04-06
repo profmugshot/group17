@@ -131,7 +131,7 @@ for docID in result:
     
     the_bucket = bucket(size_of_bucket)
     
-    for aToken in tokens:
+    for aToken in query:
         print "FOR THIS DOCID: "
         print docID
         sql='select pos from indexterms where terms=%s AND docID=%s;'
