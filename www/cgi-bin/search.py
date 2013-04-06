@@ -9,11 +9,12 @@ import MySQLdb
 from bs4 import BeautifulSoup
 import re
 import itertools
+DEBUG = 0
 
 ##returns empty bucket of size "maxsize"
 def bucket(maxsize):
     bucket = [0] * maxsize
-    print "YOU MADE A BUCKET OF SIZE: " + str(maxsize) 
+    if DEBUG: print "YOU MADE A BUCKET OF SIZE: " + str(maxsize) 
     return bucket
     
         
@@ -54,7 +55,7 @@ def calculate_the_bucket(temp_array, maxsize):
     #100%
     result.append( sum(temp_array[int(maxsize*0.9):int(maxsize*1)]) )
 
-    return result
+    return max(result)
 
 def visible(element):
     if element.parent.name in ['style', 'script', '[document]', 'head', 'title']:
@@ -77,7 +78,7 @@ cur = db.cursor()
 
 
 #============================================
-DEBUG = 0
+
 cgitb.enable()
 print "Content-type:text/html\r\n\r\n"
 
@@ -114,12 +115,15 @@ for i in result:
 
 for docID in result:
 
-    ##find the length of the docID
+    ##
+    # find the length of the docID
     sql='select html from docs where docID=%s;'
     cur.execute(sql, docID[0])
     db.commit()
     html_data = cur.fetchone()
 
+    ##
+    # clean the parsed data
     parsedPage = BeautifulSoup(html_data[0])
     text = parsedPage.findAll(text=True)
     page = filter(visible, text)
@@ -130,15 +134,15 @@ for docID in result:
     size_of_bucket = len(page)
     
     the_bucket = bucket(size_of_bucket)
-    
+
     for aToken in query:
-        print "FOR THIS DOCID: "
+        if DEBUG: print "FOR THIS DOCID: "
         print docID
         sql='select pos from indexterms where terms=%s AND docID=%s;'
         cur.execute(sql, (aToken,docID[0]))
         db.commit()
         jian_data = cur.fetchall()
-        print "this is..." + aToken + " data."
+        if DEBUG: print "this is..." + aToken + " data."
         a = jian_data[0][0].split(',')
         JIAN = [int(y) for y in a]
         print JIAN
@@ -147,9 +151,10 @@ for docID in result:
 
     print "\n"
     print "running bucket for docID: " + str(docID)
+    print "SCORE: "
     print calculate_the_bucket(the_bucket,size_of_bucket);
         #print "result for bucket is... " + str(bucket(JIAN, PEI))
-    print "=======================================\n\n"
+    print "=======  ================================\n\n"
 
 ##
 # Constructing variables to pass to HTML
