@@ -20,20 +20,23 @@ cur = db.cursor()
 
 #============================================
 DEBUG = 0
-
+cgitb.enable()
+##
+# Setting JinJa Env.
 path=mod_locator.mod_path()
 path=os.path.dirname(path)
 env = jj.Environment(loader=jj.FileSystemLoader(path+'/template'))
 
-cgitb.enable()
-
+##
+# Getting html form POST
 fs = cgi.FieldStorage()
 querys = fs.getlist("query")
 query = ",".join(querys)
 form = query.replace(","," ")
 query = query.strip(",")
 
-
+##
+# Retrieving from database
 tokenDocList = []
 for token in query:
     sql = 'select docID from indexterms where terms=%s;'
@@ -45,6 +48,8 @@ for token in query:
 result = set(tokenDocList[0]).intersection(*tokenDocList)
 result = list(result)
 
+##
+# Constructing variables to pass to HTML
 var = {
     'title': 'CS456 G17 Jinja2 - '+query,
     'heading': 'Jinja Demo',
@@ -53,12 +58,16 @@ var = {
     'resultLen':len(result)
     }
 
+##
+# Render HTML...
 template = env.get_template('search.html')
 print "Content-type:text/html\r\n\r\n"
 print template.render(var)
 
+##
+# Post scripts...
 if DEBUG: print query
 
 print len(result)
 for i in result:
-print i
+    print i
