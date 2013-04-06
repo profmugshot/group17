@@ -1,3 +1,4 @@
+#!/usr/bin/python2.7
 #!E:/Program Files (x86)/Python27/python.exe -u
 import jinja2 as jj
 import os
