@@ -6,6 +6,8 @@ import os
 import mod_locator
 import cgi, cgitb
 
+DEBUG = 0
+
 path=mod_locator.mod_path()
 path=os.path.dirname(path)
 env = jj.Environment(loader=jj.FileSystemLoader(path+'/template'))
@@ -14,8 +16,8 @@ cgitb.enable()
 
 fs = cgi.FieldStorage()
 querys = fs.getlist("query")
-query = ""
-query = query.join(querys)
+query = ",".join(querys)
+query = query.replace(","," ")
 
 var = {
     'title': 'CS456 G17 Jinja2 - '+query,
@@ -26,3 +28,5 @@ var = {
 template = env.get_template('search.html')
 print "Content-type:text/html\r\n\r\n"
 print template.render(var)
+
+if DEBUG: print query
