@@ -5,41 +5,45 @@
 <head>
     <title>{{title}}</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="../js/main.js"></script>
     <script src="../js/bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 </head>
-<body>
-  <div class="container-fluid">
-      <div class="row-fluid navbar">
-        <div class="navbar-inner">
-          <a class="brand" href="./jinja.cgi">_Group 17<a>
+<body class="pull-down3">
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+          <a class="brand" href="./jinja.cgi"> _Group 17</a>
           <div class="nav text-center"> 
-            <form name="search" class="well well-small form-search" action="./search.py" method="POST">
-              <input name="query" value="{{query}}" type="text" class="input-medium search-query span6">
-              <button type="submit" class="btn btn-primary">Search</button>
-              <button type="submit" class="btn btn-secondary">Photo</button>
+            <form name="search" class="form-search" action="./search.py" method="POST" style="margin-bottom: 0;">
+              <div class="input-append" style="margin-top: 7px;">
+                <input value="{{query}}" class="search-query offset1" name="query" type="text" >
+                <span class="add-on" style="margin-bottom: 0;"><i class="icon-camera"></i></span>
+                <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i></button>
+              </div>
             </form>
           </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+      <div class="row">
+        <div class="span4 alert {% if resultLen > 0 %} alert-info {% endif %}">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {% if resultLen > 0 %}
+              <strong>Done.</strong> We've retrieved {{resultLen}} results.
+            {% else %}
+              <strong>Oooops!</strong> We found 0 result for your query :(
+            {% endif %}
         </div>
       </div>
-      <div class="row-flouid">
-        <div class="text-center">
-            <div class="hero-unit">
-              <h1>Heading</h1>
-                <p>Tagline</p>
-                <p>
-                <a class="btn btn-primary btn-large">
-                Learn more
-                </a>
-              </p>
-            </div>
-            <p>{{resultLen}}</p>
-            {% for result in results %}
-              <li><a href="{{result[0]}}">{{result[0]}}</a></li>
-            {% endfor %}
-        </div>
+      <div class="row">
+        {% for result in results %}
+          <blockquote>
+            <p>{{result[1]}}</p>
+            <small><a href="{{result[0]}}">{{result[0]}}</a></small>
+          </blockquote>
+        {% endfor %}
       </div>
   </div>
 </body>

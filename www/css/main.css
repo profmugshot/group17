@@ -1,7 +1,21 @@
 body{
-	padding-top: 100px;
 }
 
-navTop{
-	hight:100px;
+.navTopFloat{
+	position:fixed;
+	overflow: hidden;
+	width: 100%;
+}
+
+.pull-down1{
+	padding-top: 20px;
+}
+.pull-down2{
+	padding-top: 40px;
+}
+.pull-down3{
+	padding-top: 60px;
+}
+.pull-down5{
+	padding-top: 100px;
 }
