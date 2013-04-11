@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from collections import Counter 
+from collections import Counter
 from random import randint
 import codecs
 import locale
@@ -21,7 +21,7 @@ docDB={}
 #mysql connector
 db = MySQLdb.connect(host="localhost", # your host, usually localhost
 		     user="root", # your username
-		      passwd="test", # your password
+		      passwd="ihave1cookie", # your password
 		      db="storage") # name of the data base
 cur = db.cursor()
 cur.execute('SHOW TABLES;')
@@ -63,7 +63,7 @@ def visible(element):
 	return True
 
 def crawl():
-	seedURL = ['http://www.cs.sfu.ca/people/faculty.html']
+	seedURL = ['http://www.cs.sfu.ca/people/faculty.html','http://www.cs.sfu.ca/CourseCentral']
 	parsedURL = []
 	while len(seedURL)!=0:
 ##		if len(parsedURL)>20:
@@ -78,15 +78,15 @@ def crawl():
 		except:
 			print 'can\'t open url'
 			continue
-		
-		soup = BeautifulSoup(html)			
-		try:			
-			extractedLinks = extractInternalLinks(url, soup)	
+
+		soup = BeautifulSoup(html)
+		try:
+			extractedLinks = extractInternalLinks(url, soup)
 			pageTitle = clean(soup.title.string)
 		except:
 			print 'cannot clean page title, likely a PDF, skipping doc'
 			continue
-		
+
 		docID = url
 		docObj = doc(docID, pageTitle, html)
 
@@ -102,15 +102,15 @@ def crawl():
 		parsedSet= Set(parsedURL)
 		seedSet = Set(seedURL)
 		tempSet = Set(extractedLinks)
-		
+
 		#get all urls in tempSet that is not in parsedSet (tempSet - parsedSet)
-		toBeAddedURL = tempSet.difference(parsedSet) 
-		
+		toBeAddedURL = tempSet.difference(parsedSet)
+
 		seedSet = seedSet.union(toBeAddedURL)
 		seedURL = list(seedSet)
 		print 'length of seed URL ', len(seedURL)
 		print 'length of parsedURL ', len(list(tempSet))
-		
+
 		print '#####ending iteration####'
 
 def extractInternalLinks(seedURL, parentSoup):
@@ -120,15 +120,15 @@ def extractInternalLinks(seedURL, parentSoup):
 		link = link.get('href')
 		try:
 			link = urljoin(seedURL, link)
-			if not('cs.sfu.ca' in link.lower()):
+			if not('cs.sfu.ca' in link.lower()) or ('#' in link) or ('calendar' in link.lower()):
 				continue
 			try:
 				html = urllib2.urlopen(link) #pulls html
 				parsedPage = BeautifulSoup(html)
 			except:
-				print 'cant open page' + link 
+				print 'cant open page' + link
 				continue
-		
+
 			text = parsedPage.findAll(text=True)
 			page = filter(visible, text)
 			page = [token.strip(' ').lower() for token in page]
