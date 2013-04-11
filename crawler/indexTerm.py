@@ -9,7 +9,7 @@ sys.setrecursionlimit(100000)
 #mysql connector
 db = MySQLdb.connect(host="localhost", # your host, usually localhost
                      user="root", # your username
-                      passwd="ihave1cookie", # your password
+                      passwd="", # your password
                       db="storage") # name of the data base
 
 ######end db connection########
@@ -51,7 +51,7 @@ def createIndexes():
     db.commit()
     for html in cur.fetchall(): #html returned is an array
         NumIndexedDocs+=1
-        print "%s: %s" %(NumIndexedDocs,html[0])
+        print "\nURL[%s]: %s" %(NumIndexedDocs,html[0])
 
         soup = BeautifulSoup(html[1])
         text = soup.findAll(text=True)
@@ -60,13 +60,12 @@ def createIndexes():
         pos = 0
 ##      debug=0;
         NumTotalTerms = len(page)
-        print "Total # terms: %s" % NumTotalTerms
+        print "Total # terms: %s. Processing:" % NumTotalTerms
         sys.stdout.write("0..")
         for token in page:
             NumIndexedTerms+=1
             percent = int(round(float(NumIndexedTerms)/NumTotalTerms,0))
-            if(NumIndexedTerms%100==0):
-                sys.stdout.write("%s.." %NumIndexedTerms)
+            sys.stdout.write("\r%s (%.0f)" %(NumIndexedTerms,NumIndexedTerms/NumTotalTerms))
 ##            if debug>3:
 ##                break;
             #print token
