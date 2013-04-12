@@ -60,12 +60,13 @@ def createIndexes():
         pos = 0
 ##      debug=0;
         NumTotalTerms = len(page)
-        print "Total # terms: %s. Processing:" % NumTotalTerms
+        print "\tTotal # terms: %s. Processing:" % NumTotalTerms
         sys.stdout.write("0..")
         for token in page:
             NumIndexedTerms+=1
             percent = int(round(float(NumIndexedTerms)/NumTotalTerms,0))
-            sys.stdout.write("\r%s (%.0f)" %(NumIndexedTerms,NumIndexedTerms/NumTotalTerms))
+            sys.stdout.write("\r\t%s (%.0f)" %(NumIndexedTerms,NumIndexedTerms/NumTotalTerms))
+            sys.stdout.flush()
 ##            if debug>3:
 ##                break;
             #print token
