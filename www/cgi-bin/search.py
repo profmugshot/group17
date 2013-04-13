@@ -92,7 +92,10 @@ env = jj.Environment(loader=jj.FileSystemLoader(path+'/template'))
 # Getting html form POST
 fs = cgi.FieldStorage()
 querys = fs.getlist("query")
-query = querys[0].split(" ")
+try:
+    query = querys[0].split(" ")
+except:
+    continue
 
 if DEBUG: print query
 
@@ -124,6 +127,10 @@ for docID in result:
 
     ##
     # clean the parsed data
+    try:
+        page = html_data[0] #gets page
+    except:
+        continue
     parsedPage = BeautifulSoup(html_data[0])
     text = parsedPage.findAll(text=True)
     page = filter(visible, text)
@@ -151,12 +158,13 @@ for docID in result:
 
         bucket_add(JIAN,the_bucket)
 
-    print "\n"
-    print "running bucket for docID: " + str(docID)
-    print "SCORE: "
-    print calculate_the_bucket(the_bucket,size_of_bucket);
-        #print "result for bucket is... " + str(bucket(JIAN, PEI))
-    print "</br>\n\n"
+   if DEBUG:
+        print "\n"
+        print "running bucket for docID: " + str(docID)
+        print "SCORE: "
+        print calculate_the_bucket(the_bucket,size_of_bucket);
+	#print "result for bucket is... " + str(bucket(JIAN, PEI))
+        print "</br>\n\n"
 
 ##
 # Constructing variables to pass to HTML
