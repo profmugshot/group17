@@ -112,24 +112,19 @@ for token in query:
 result = set(tokenDocList[0]).intersection(*tokenDocList)
 result = list(result)
 
-print len(result)
-for i in result:
-    if DEBUG: print i
+if DEBUG: 
+    print "Length of result: %s)%len(result)
+    for i in result:
+        print i
 
 for docID in result:
+    break
     ##
     # find the length of the docID
     sql='select html from docs where docID=%s;'
     cur.execute(sql, docID[0])
     db.commit()
     html_data = cur.fetchone()
-
-    for aToken in query:
-        sql='select pos from indexterms where terms=%s AND docID=%s;'
-        cur.execute(sql, (aToken,docID[0]))
-        db.commit()
-        jian_data = cur.fetchall()
-    break
 
     ##
     # clean the parsed data
