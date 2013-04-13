@@ -117,7 +117,7 @@ for i in result:
     if DEBUG: print i
 
 for docID in result:
-
+    break
     ##
     # find the length of the docID
     sql='select html from docs where docID=%s;'
