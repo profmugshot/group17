@@ -95,7 +95,7 @@ querys = fs.getlist("query")
 try:
     query = querys[0].split(" ")
 except:
-    continue
+    if DEBUG: print "No Queery"
 
 if DEBUG: print query
 
@@ -157,14 +157,13 @@ for docID in result:
         if DEBUG: print JIAN
 
         bucket_add(JIAN,the_bucket)
-
-   if DEBUG:
-        print "\n"
-        print "running bucket for docID: " + str(docID)
-        print "SCORE: "
-        print calculate_the_bucket(the_bucket,size_of_bucket);
-	#print "result for bucket is... " + str(bucket(JIAN, PEI))
-        print "</br>\n\n"
+        if DEBUG:
+            print "\n"
+            print "running bucket for docID: " + str(docID)
+            print "SCORE: "
+            print calculate_the_bucket(the_bucket,size_of_bucket);
+        #print "result for bucket is... " + str(bucket(JIAN, PEI))
+            print "</br>\n\n"
 
 ##
 # Constructing variables to pass to HTML
