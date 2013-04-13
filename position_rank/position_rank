@@ -1,0 +1,12 @@
+import MySQLdb
+
+db = MySQLdb.connect(host="http://cmpt456.csil.sfu.ca:8017/", # your host, usually localhost
+user="root", # your username
+passwd="ihave1cookie", # your password
+db="storage") # name of the data base
+
+cur = db.cursor()
+
+cur.execute('SHOW TABLES;')
+db.commit()
+print cur.fetchone()
