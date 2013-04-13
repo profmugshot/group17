@@ -113,7 +113,7 @@ result = set(tokenDocList[0]).intersection(*tokenDocList)
 result = list(result)
 
 if DEBUG: 
-    print "Length of result: %s)%len(result)
+    print "Length of result: %s" %len(result)
     for i in result:
         print i
 
