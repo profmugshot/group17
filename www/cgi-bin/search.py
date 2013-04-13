@@ -1,4 +1,3 @@
-#!E:/Program Files (x86)/Python27/python.exe -u
 #!/usr/bin/python2.7
 ## Search
 
@@ -15,10 +14,10 @@ DEBUG = 0
 ##returns empty bucket of size "maxsize"
 def bucket(maxsize):
     bucket = [0] * maxsize
-    if DEBUG: print "YOU MADE A BUCKET OF SIZE: " + str(maxsize)
+    if DEBUG: print "YOU MADE A BUCKET OF SIZE: " + str(maxsize) 
     return bucket
-
-
+    
+        
 ##returns back a bucket with all the new items added
 def bucket_add(array,bucket):
     try:
@@ -30,7 +29,7 @@ def bucket_add(array,bucket):
     #print "bucket at this point.. after adding..."
     #print bucket
     return bucket
-
+    
 
 def calculate_the_bucket(temp_array, maxsize):
     result = []
@@ -72,7 +71,7 @@ def visible(element):
 #--------------------------------------------
 db = MySQLdb.connect(host="localhost", # your host, usually localhost
 user="root", # your username
-passwd="", # your password
+passwd="ihave1cookie", # your password
 db="storage") # name of the data base
 #--------------------------------------------
 cur = db.cursor()
@@ -110,15 +109,12 @@ for token in query:
 result = set(tokenDocList[0]).intersection(*tokenDocList)
 result = list(result)
 
-#######
-#debug: print before html
-# print len(result)
-# for i in result:
-#     if DEBUG: print i
-#
-#######
+print len(result)
+for i in result:
+    if DEBUG: print i
 
 for docID in result:
+
     ##
     # find the length of the docID
     sql='select html from docs where docID=%s;'
@@ -136,9 +132,10 @@ for docID in result:
     page = list(itertools.chain.from_iterable(page))
 
     size_of_bucket = len(page)
-
+    
     the_bucket = bucket(size_of_bucket)
 
+    print "</br>"
 
     for aToken in query:
         if DEBUG: print "FOR THIS DOCID: "
@@ -154,17 +151,12 @@ for docID in result:
 
         bucket_add(JIAN,the_bucket)
 
-#######
-#debug: print before tml
-    # print "</br>"
-    # print "\n"
-    # print "running bucket for docID: " + str(docID)
-    # print "SCORE: "
-    # print calculate_the_bucket(the_bucket,size_of_bucket);
-    #     #print "result for bucket is... " + str(bucket(JIAN, PEI))
-    # print "</br>\n\n"
-#
-#######
+    print "\n"
+    print "running bucket for docID: " + str(docID)
+    print "SCORE: "
+    print calculate_the_bucket(the_bucket,size_of_bucket);
+        #print "result for bucket is... " + str(bucket(JIAN, PEI))
+    print "</br>\n\n"
 
 ##
 # Constructing variables to pass to HTML
