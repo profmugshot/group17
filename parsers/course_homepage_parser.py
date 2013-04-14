@@ -10,17 +10,17 @@ textimage = soup.find_all("tr", {"id":"highlight_row"})
 
 
 for i in textimage:
-    #i = i.replace("<br>", "")
-    #i = i.replace("</br>", "")
-##    text_img =  i.find_all("td", {"class":"highlighted"})
-##    course = text_img[1]
-##    course_name = text_img[3]
-##    try:
-##        outline = text_img[5].a["href"]
-##    except:
-##        print ""
-##    course_prof = text_img[4]
-##    outline = urljoin(seed, outline)
+    i = i.replace("<br>", "")
+    i = i.replace("</br>", "")
+    text_img =  i.find_all("td", {"class":"highlighted"})
+    course = text_img[1]
+    course_name = text_img[3]
+    try:
+        outline = text_img[5].a["href"]
+    except:
+        print ""
+    course_prof = text_img[4]
+    outline = urljoin(seed, outline)
     #info_block = i.find_all("div", {"class":"text"})[0]
     #print text_img.img['src']
     #print "<img src='"+urljoin(seed, text_img.img['src'])+"'/>"
@@ -31,16 +31,15 @@ for i in textimage:
     #    print j
     #print '\n'
     #print text_img[0]
-    #print course
-    #print course_name
-    #print course_prof
-    #print outline
+    print course
+    print course_name
+    print course_prof
+    print outline
 
-    #print text_img
-    print ''
+    print text_img
     
-    #print '========================='
-print textimage.next
+    print '========================='
+
 
 
 
