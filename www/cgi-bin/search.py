@@ -10,6 +10,7 @@ import MySQLdb
 from bs4 import BeautifulSoup
 import re
 import itertools
+import operator
 DEBUG = 0
 DO_RANK = 1
 
@@ -48,6 +49,8 @@ def calculate_the_bucket(temp_array, maxsize):
     result.append( sum(temp_array[int(maxsize*0.9):int(maxsize*1)]) )#100%
 
     return max(result)
+
+
 
 def visible(element):
     if element.parent.name in ['style', 'script', '[document]', 'head', 'title']:
@@ -154,7 +157,8 @@ if DO_RANK:
         the_bucket = bucket(size_of_bucket)
 
         print "</br>"
-
+        #dictionary to store docID plus max bucket and sort
+        resultDict={}
         for aToken in query:
             if DEBUG: print "FOR THIS DOCID: "
             if DEBUG: print docID
@@ -172,9 +176,14 @@ if DO_RANK:
                 print "\n"
                 print "running bucket for docID: " + str(docID)
                 print "SCORE: "
-                print calculate_the_bucket(the_bucket,size_of_bucket);
+                bucketScore = calculate_the_bucket(the_bucket,size_of_bucket);
+                resultDict.update({docID, bucketScore})
             #print "result for bucket is... " + str(bucket(JIAN, PEI))
                 print "</br>\n\n"
+
+    #sort bucket results
+    result = sorted(resultDict.iteritems(), key=operator.itemgetter(1))
+
 
 ##
 # Constructing variables to pass to HTML
