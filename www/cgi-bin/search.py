@@ -105,7 +105,9 @@ var = {
 # Render HTML...
 template = env.get_template('headerNavBar.html')
 print template.render(var)
+sys.stdout.flush()
 print env.get_template('searchProgress.html').render()
+sys.stdout.flush()
 
 ##
 # Retrieving from database
@@ -132,6 +134,7 @@ if DO_RANK:
     for docID in result:
         rankCnt += 1
         print env.get_template('searchProgress.html').render(prog=rankCnt/rankLen*100)
+        sys.stdout.flush()
         ##
         # find the length of the docID
         sql='select html from docs where docID=%s;'
