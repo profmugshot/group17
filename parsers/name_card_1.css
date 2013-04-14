@@ -1,0 +1,163 @@
+*{
+margin: 0 auto;
+padding: 0;
+}
+
+.clear{
+clear:both;
+}
+
+body{
+background: URL(img/bg12.jpg) repeat;
+
+}
+
+#container{
+/*height: 300px;*/
+width: 980px;
+margin-top: 40px;
+margin-bottom: 20px;
+background-color: white;
+-webkit-border-radius: 8px;
+-moz-border-radius: 8px;
+-webkit-box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
+-moz-box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
+box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
+}
+
+#inner-container{
+width: 900px;
+padding-top: 40px;
+
+}
+
+#top{
+}
+
+#logo-name{
+/*font-family: Georgia, sans-serif;*/
+/*font-family: Tahoma, APPLEGOTHIC, Gulim, sans-serif, Arial, Verdana;*/
+/*font: normal normal normal 76%/140% Verdana, Arial, Helvetica, sans-serif;*/
+/*font-family: Helvetica;*/
+float: left;
+width: 400px;
+font-family: Arial Black;
+font-size: 55px;
+}
+#logo-name2{
+/*font-family: Georgia, sans-serif;*/
+/*font-family: Tahoma, APPLEGOTHIC, Gulim, sans-serif, Arial, Verdana;*/
+/*font: normal normal normal 76%/140% Verdana, Arial, Helvetica, sans-serif;*/
+/*font-family: Helvetica;*/
+padding-top: 40px;
+float: left;
+width: 300px;
+padding-left: 10px;
+font-family: Arial Black;
+font-size: 20px;
+}
+
+ul#menu-op{
+margin-top: 5px;
+display: block;
+height: 30px;
+list-style-type:none;
+/*background-color: #C5C5C5;*/
+}
+
+ul#menu-op li{
+margin-top: 4px;
+display: block;
+float: left;
+overflow: none;
+margin-left: 20px;
+}
+
+ul#menu-op li a{
+padding-top: 2px;
+display: block;
+text-align: center;
+color: black;
+text-decoration: none;
+width: 80px;
+height:23px;
+background: url(./img/button_sm.png) no-repeat;
+}
+
+ul#menu-op li a:hover{
+text-decoration: underline;
+background: url(./img/button_sm_hover_dark.png) no-repeat;
+}
+
+ul#menu-op li a:active{
+text-decoration: underline;
+background: url(./img/button_sm_hover_dark.png) no-repeat;
+}
+
+
+
+
+#middle{
+
+}
+
+.post{
+}
+
+.post h2{
+font-family: Arial Black;
+}
+
+.post_with_img{
+
+}
+
+.post_img{
+float: left;
+width: 300px;
+height: 570px;
+}
+
+.post_data1{/*data next to image*/
+
+padding-left: 20px;
+float: left;
+width: 550px;
+}
+
+.post_data2{
+}
+
+.member{
+width: 900px;
+padding-top: 5px;
+padding-left: 10px;
+padding-right: 10px;
+margin-top: 40px;
+margin-bottom: 20px;
+background-color: white;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
+-moz-box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
+box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
+}
+
+.member #name{
+font-family: Arial Black;
+font-size: 23px;
+}
+
+.member #pos{
+font-family: Arial Black;
+font-size: 15px;
+}
+
+table{
+margin: 0 0 0 0;
+
+}
+
+#bottom{
+text-align: center;
+}

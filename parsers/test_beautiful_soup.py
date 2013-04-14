@@ -13,6 +13,8 @@ for i in textimage:
     text_img =  i.find_all("div", {"class":"image"})[0]
     info_block = i.find_all("div", {"class":"text"})[0]
     #print text_img.img['src']
+    print "<div class='member'>"
+    
     print "<img src='"+urljoin(seed, text_img.img['src'])+"'/>"
     print info_block.h4 or info_block.h3
     all_a =  info_block.find_all("a")
@@ -28,6 +30,7 @@ for i in textimage:
         except:
             print ""
     print '\n'
+    print "</div>"
 
 
 
