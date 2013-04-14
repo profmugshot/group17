@@ -12,7 +12,7 @@ import re
 import itertools
 import operator
 DEBUG = 0
-DO_RANK = 1
+DO_RANK = 0
 
 ##returns empty bucket of size "maxsize"
 def bucket(maxsize):
@@ -90,7 +90,7 @@ querys = fs.getlist("query")
 try:
     query = querys[0].split(" ")
 except:
-    if DEBUG: print "No Queery"
+    if DEBUG: print "No Query"
 
 if DEBUG: print query
 
@@ -121,7 +121,6 @@ for token in query:
 
 result = set(tokenDocList[0]).intersection(*tokenDocList)
 result = list(result)
-
 if DEBUG:
     print "Length of result: %s" %len(result)
     for i in result:
@@ -131,6 +130,7 @@ if DO_RANK:
     rankLen = float(len(result))
     rankCnt = 0
     rankProgress=0.0
+    resultDict={}
     for docID in result:
         rankCnt += 1
         print env.get_template('searchProgress.html').render(prog=rankCnt/rankLen*100)
@@ -161,7 +161,6 @@ if DO_RANK:
 
         print "</br>"
         #dictionary to store docID plus max bucket and sort
-        resultDict={}
         for aToken in query:
             if DEBUG: print "FOR THIS DOCID: "
             if DEBUG: print docID
@@ -180,16 +179,24 @@ if DO_RANK:
                 print "running bucket for docID: " + str(docID)
                 print "SCORE: "
                 bucketScore = calculate_the_bucket(the_bucket,size_of_bucket);
-                resultDict.update({docID, bucketScore})
+                resultDict.update({docID:bucketScore})
+	    else:
+                bucketScore = calculate_the_bucket(the_bucket,size_of_bucket);
+                resultDict.update({docID:bucketScore})
+
             #print "result for bucket is... " + str(bucket(JIAN, PEI))
                 print "</br>\n\n"
 
     #sort bucket results
-    result = sorted(resultDict.iteritems(), key=operator.itemgetter(1))
-
-
+    result = sorted(resultDict.iteritems(), key=operator.itemgetter(1), reverse=True)
+    if DEBUG: print result
+    result = [sortedLinks[0] for sortedLinks in result]
+#    print result
+    #result = list(result)
 ##
 # Constructing variables to pass to HTML
+			
+	
 var = {
     'title': 'CS456 G17 Jinja2 - '+querys[0],
     'query': querys[0],
