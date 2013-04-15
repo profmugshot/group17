@@ -13,7 +13,7 @@ import itertools
 import operator
 DEBUG = 0
 DO_RANK = 0
-
+FREQ_COUNT=True
 ##returns empty bucket of size "maxsize"
 def bucket(maxsize):
     bucket = [0] * maxsize
@@ -191,12 +191,49 @@ if DO_RANK:
     result = sorted(resultDict.iteritems(), key=operator.itemgetter(1), reverse=True)
     if DEBUG: print result
     result = [sortedLinks[0] for sortedLinks in result]
-#    print result
     #result = list(result)
+#freq count
+if FREQ_COUNT: 
+	resultDic={}
+	for token in query:
+		#for url in result:
+		sql = "select pos, docID from indexterms where terms=%s;"
+		#cur.execute(sql, (token, url[0]))
+		cur.execute(sql, (token))
+		db.commit()
+		rows = (cur.fetchall())
+		pos = [freqIndex[0] for freqIndex in rows] #get all positions of all indexes and store in pos
+		posFreq = [len(freq.split(",")) for freq in pos] #split each positions into list and count them
+		#print posFreq
+		
+		i=0
+		for doc in rows: 
+			try:
+				#if doc is in dictionary already, exception thrown if trying to access non-existing element
+				val = resultDic[doc[1]] #frequency for doc[1]
+				#resultDic.update( {doc[1]:posFreq[i]+val} ) #appends to ditionary
+				resultDic[doc[1]]=val+1
+				
+			except:	
+				#if doc not in dictionary
+				resultDic.update( {doc[1]:posFreq[i]} ) #appends to ditionary	
+			i = i + 1
+	outputResultDic = {}
+	for docID in result:
+		docID=docID[0]
+		try: #if exist
+			val = resultDic[docID]
+			outputResultDic[docID] = val + 1 
+		except: #if not exist
+			outputResultDic[docID] = 1	
+			#print 'something went wrong with freq ', docID
+	result = sorted(outputResultDic.iteritems(), key=operator.itemgetter(1), reverse=True)
+		
+#print token
+#print result
+
 ##
-# Constructing variables to pass to HTML
-			
-	
+# Constructing variables to pass to HTML	
 var = {
     'title': 'CS456 G17 Jinja2 - '+querys[0],
     'query': querys[0],
