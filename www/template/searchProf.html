@@ -1,0 +1,18 @@
+  <div class="container-fluid">
+      <div class="row">
+        {% for card in namecards %}
+          <blockquote>
+            <div class="namecard">
+				<img src={{card[3]}} /><br />
+				name: {{card[1]}}<br />
+				profile: <a href="{{card[5]}}"></a><br />
+				website: <a href="{{card[6]}}"></a><br />
+				contact: {{card[7]}}
+				
+				
+			
+			</div>
+          </blockquote>
+        {% endfor %}
+      </div>
+  </div>

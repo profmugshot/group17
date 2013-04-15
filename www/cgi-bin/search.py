@@ -114,6 +114,9 @@ sys.stdout.flush()
 # Name Card Search Results
 namecards = namecard.generate_cards(query)
 
+print env.get_template('searchProf.html').render(namecards=namecards)
+sys.stdout.flush()
+
 ##
 # Retrieving from database
 tokenDocList = []
