@@ -51,6 +51,7 @@ for i in textimage:
     cur.execute(sql, prof_name )
     rows = cur.fetchall()
     db.commit()
+    
     if len(rows)<1:
         cur.execute(sql, prof_name[0]+"%"+prof_name.split("%")[-1])
         rows = cur.fetchall()
