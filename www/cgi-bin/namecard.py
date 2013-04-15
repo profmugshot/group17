@@ -27,18 +27,19 @@ def parse_query(query):
     return "%"+prof_name+"%"
 
 def generate_cards(query):
-    print "I got query: " + query
-    print "parsing query into tokens to look in database..."    
-    print "adding %s between the queries to search better"
+    if debug: print "I got query: " + query
+    if debug: print "parsing query into tokens to look in database..."    
+    if debug: print "adding %s between the queries to search better"
     prof_name = parse_query(query)
-    print "result: " + prof_name
+    if debug: print "result: " + prof_name
     
-    print "looking up query in the database..."
-    print "for each result fron db's professor, generate namecard..."
+    if debug: print "looking up query in the database..."
+    if debug: print "for each result fron db's professor, generate namecard..."
     return prof_db_lookup(prof_name)
 
 def test():
     data = generate_cards("jian pei")
+    print "Remember to turn on the debug to see steps."
     for entry in data:
         print entry
         print

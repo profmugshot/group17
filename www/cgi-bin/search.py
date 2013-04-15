@@ -112,7 +112,7 @@ sys.stdout.flush()
 
 ##
 # Name Card Search Results
-namecard.generate_cards(query)
+namecards = namecard.generate_cards(query)
 
 ##
 # Retrieving from database
@@ -243,7 +243,8 @@ var = {
     'title': 'CS456 G17 Jinja2 - '+querys[0],
     'query': querys[0],
     'results': result,
-    'resultLen':len(result)
+    'resultLen':len(result),
+    'namecards': namecards
     }
 
 ##
