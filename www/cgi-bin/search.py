@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 import re
 import itertools
 import operator
-import prints_hello
+import namecard
 DEBUG = 0
 DO_RANK = 0
 FREQ_COUNT=True
@@ -111,6 +111,10 @@ print env.get_template('searchProgress.html').render()
 sys.stdout.flush()
 
 ##
+# Name Card Search Results
+namecard.generate_cards(query)
+
+##
 # Retrieving from database
 tokenDocList = []
 for token in query:
@@ -126,7 +130,7 @@ if DEBUG:
     print "Length of result: %s" %len(result)
     for i in result:
         print i
-prints_hello.printhellow()
+				
 if DO_RANK:
     rankLen = float(len(result))
     rankCnt = 0
