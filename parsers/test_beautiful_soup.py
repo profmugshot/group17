@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import sys, re
 from urlparse import urljoin
 import MySQLdb
+debug = 0
 
 db = MySQLdb.connect(host="localhost", # your host, usually localhost
                      user="root", # your username
@@ -36,14 +37,14 @@ for i in textimage:
             prof_name=rx.sub('%',info_block.h4.text.split(",")[0]).strip()
         
     except:
-        print "some professor has a broken<h4> name"
+        if debug: print "some professor has a broken<h4> name"
 
     try:
         if info_block.h3:
             prof_name=rx.sub('%',info_block.h3.text.split(",")[0]).strip()
     except:
-        print "NO NAME?"
-    print "this is prof_name: " + prof_name
+        if debug: print "NO NAME?"
+    if debug: print "this is prof_name: " + prof_name
     sql = '''
             select subject,number,section,title,instructor from courses where instructor like %s;
             '''
@@ -58,11 +59,18 @@ for i in textimage:
         cur.execute(sql, "%"+prof_name.split("%")[-1])
         rows = cur.fetchall()
         db.commit()
+
+    print "<table cellspaceing='0'>"
     
+    ###
+    ##table header
+    print "<tr><th>Subject</th><th>Number</th><th>Section</th><th>Title</th><th>Instructor</th></tr>"
     for row in rows:
-        print "taught: " + str(row)
-    
-    
+        print "<tr class='even'>"
+        #print "taught: " + str(row)
+        print "<td>" + row[0] +"</td><td>" + row[1] +"</td><td>" + row[2] +"</td><td>" + row[3] +"</td><td>" + row[4] +"</td>"
+        print "</tr>"
+    print "</table>"
 
     for j in all_a:
         #j.get('href')=urljoin(seed, j.get('href'))
