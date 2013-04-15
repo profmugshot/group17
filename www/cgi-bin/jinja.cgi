@@ -1,12 +1,15 @@
 #!/usr/bin/python2.7
 #!E:/Program Files (x86)/Python27/python.exe -u
 import jinja2 as jj
-import os
+import os,sys
 import mod_locator
 
 path=mod_locator.mod_path()
 path=os.path.dirname(path)
 env = jj.Environment(loader=jj.FileSystemLoader(path+'/template'))
+
+sys.path.append(path)
+import URLopen as uo
 
 var = {
     'title': 'CS456 G17 Jinja2',

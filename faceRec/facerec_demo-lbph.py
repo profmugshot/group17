@@ -45,7 +45,7 @@ def read_images(path, sz=None):
                     if (sz is not None):
                         im = cv2.resize(im, sz)
                     X.append(np.asarray(im, dtype=np.uint8))
-                    y.append(c)
+                    y.append(filename)
                     lables[c]=filename
                 except IOError, (errno, strerror):
                     print "I/O error({0}): {1}".format(errno, strerror)
@@ -89,11 +89,14 @@ if __name__ == "__main__":
     # But so many people were confused, when I sliced an image
     # off in the C++ version, so I am just using an image we
     # have trained with.
+    # model.save("lbph.yml")
     #
     # model.predict is going to return the predicted label and
     # the associated confidence:
+    pre=cv2.imread("img/JianPei/JianPei.0.jpg", cv2.IMREAD_GRAYSCALE)
     n=-5
-    [p_label, p_confidence] = model.predict(np.asarray(X[n]))
+    prd=np.asarray(X[n])
+    [p_label, p_confidence] = model.predict(pre)
     # Print it:
     print "Predicted label = %d (confidence=%.2f)" % (p_label, p_confidence)
     print "Predicted: %s; Actual: %s" % (lables[p_label], lables[y[n]])
