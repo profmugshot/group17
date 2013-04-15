@@ -126,7 +126,7 @@ if DEBUG:
     print "Length of result: %s" %len(result)
     for i in result:
         print i
-print_hello.printhellow()
+prints_hello.printhellow()
 if DO_RANK:
     rankLen = float(len(result))
     rankCnt = 0
