@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 import re
 import itertools
 import operator
+import prints_hello
 DEBUG = 0
 DO_RANK = 0
 FREQ_COUNT=True
@@ -125,7 +126,7 @@ if DEBUG:
     print "Length of result: %s" %len(result)
     for i in result:
         print i
-
+print_hello.printhellow()
 if DO_RANK:
     rankLen = float(len(result))
     rankCnt = 0
