@@ -7,8 +7,8 @@ debug = 0
 
 db = MySQLdb.connect(host="localhost", # your host, usually localhost
                      user="root", # your username
-                     passwd="", # your password
-                     db="project_final") # name of the data base
+                     passwd="ihave1cookie", # your password
+                     db="storage") # name of the data base
 cur = db.cursor()
 
 def prof_db_lookup(prof_name):
