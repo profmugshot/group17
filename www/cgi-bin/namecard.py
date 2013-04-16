@@ -23,7 +23,7 @@ def prof_db_lookup(prof_name):
 def parse_query(query):
     prof_name = ""
     rx = re.compile('\W+')
-    prof_name=rx.sub('%',query).strip()
+    prof_name=rx.sub('%',query)
     return "%"+prof_name+"%"
 
 def generate_cards(query):
