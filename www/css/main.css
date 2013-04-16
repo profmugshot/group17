@@ -67,6 +67,10 @@ body{
 	color: red;
 }
 
+.namecard .btn{
+	padding: 0;
+}
+
 .namecard_name {
 	width:279px;
 	background-color: white;
