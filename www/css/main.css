@@ -29,17 +29,20 @@ body{
 	width: 300px;
 	float: left;
 	overflow: hidden;
+	padding: 10px;
+	margin-left: 10px; 
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	-webkit-box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
 	-moz-box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
 	box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
-	
+
+
 }
 
 .namecard_img{
 	width: 200px;
-	margin: 0 auto;
+	/*margin: 0 auto;*/
 
 }
 
