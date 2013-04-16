@@ -52,7 +52,7 @@ for prof_web_profile in prof_web_profiles:
                     if rx.sub('',content.text) == "Education":
                         db_prof_education = removeNonAscii(content.parent.contents[3].text)
                     elif rx.sub('',content.text) == "Contact":
-                        db_prof_contact = removeNonAscii(content.parent.contents[3].text)
+                        db_prof_contact = removeNonAscii(content.parent.contents[3].text).replace("\n",";").replace(";;","")
                     elif rx.sub('',content.text) == "Researchinterests":
                         db_prof_research = removeNonAscii(content.parent.contents[3].text)
                     else:
