@@ -65,13 +65,12 @@ body{
 
 .namecard h1{
 	color: red;
-	outline-color: white;
-	outline-width: 2px;
+	outline: #00FF00 dotted thick;
 }
 
 .namecard_name {
-	width:25px;
-	position: fixed;
-	top: 60px;
+	width:279px;
+	position: absolute;
+	top: 194px;
 	border: 1px solid red; 
 }
