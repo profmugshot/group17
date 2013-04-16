@@ -29,7 +29,8 @@ body{
 	width: 300px;
 	float: left;
 	overflow: hidden;
-	padding: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	margin-left: 10px; 
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
@@ -41,8 +42,8 @@ body{
 }
 
 .namecard_img{
-	width: 200px;
-	/*margin: 0 auto;*/
+	background-color: black;
+	margin: 0 auto;
 
 }
 
