@@ -68,3 +68,10 @@ body{
 	outline-color: white;
 	outline-width: 2px;
 }
+
+.namecard_name {
+	width:25px;
+	position: fixed;
+	top: 60px;
+	border: 1px solid red; 
+}
