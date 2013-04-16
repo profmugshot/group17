@@ -42,6 +42,8 @@ body{
 }
 
 .namecard_img{
+	height:130;
+	text-align: center;
 	background-color: black;
 	margin: 0 auto;
 
@@ -49,5 +51,6 @@ body{
 
 .namecard_info{
 	width: 250px;
+	padding: 10px;
 
 }
