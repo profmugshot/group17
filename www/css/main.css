@@ -32,6 +32,7 @@ body{
 	overflow: hidden;
 	padding-top: 20px;
 	padding-bottom: 10px;
+	margin-top: 10px;
 	margin-left: 10px; 
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
@@ -46,7 +47,7 @@ body{
 .namecard_img{
 	height: 130px;
 	text-align: center;
-	background-color: black;
+	background: url('../img/rred_texture.jpg') repeat-x black;
 	margin: 0 auto;
 	padding-top: 10px;
 
