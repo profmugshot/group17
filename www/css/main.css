@@ -27,25 +27,28 @@ body{
 
 .namecard{
 	width: 300px;
+	height: 400px;
 	float: left;
 	overflow: hidden;
-	padding-top: 10px;
+	padding-top: 20px;
 	padding-bottom: 10px;
 	margin-left: 10px; 
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
-	-webkit-box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
-	-moz-box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
-	box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
+
+	-webkit-box-shadow: 0 1px 11px rgba(78, 68, 60, 0.3);
+	-moz-box-shadow: 0 1px 11px rgba(78, 68, 60, 0.3);
+	box-shadow: 0 1px 11px rgba(78, 68, 60, 0.3);
 
 
 }
 
 .namecard_img{
-	height:130;
+	height: 130px;
 	text-align: center;
 	background-color: black;
 	margin: 0 auto;
+	padding-top: 10px;
 
 }
 
