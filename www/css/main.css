@@ -27,7 +27,7 @@ body{
 
 .namecard{
 	width: 300px;
-	height: 400px;
+	/*height: 400px;*/
 	float: left;
 	overflow: hidden;
 	padding-top: 20px;
