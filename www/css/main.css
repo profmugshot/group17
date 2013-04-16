@@ -1,3 +1,8 @@
+.clear{
+
+	clear:both;
+}
+
 body{
 }
 
@@ -18,4 +23,11 @@ body{
 }
 .pull-down5{
 	padding-top: 100px;
+}
+
+.namecard{
+	width: 300px;
+	float: left;
+
+
 }
