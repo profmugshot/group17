@@ -73,9 +73,7 @@ body{
 
 .namecard_name {
 	width:279px;
-	background-color: white;
-	border:1px 1px 1px 1px solid gray;
 	padding: 2px;
 	position: relative;
-	top: -43px;
+	top: -21px;
 }
