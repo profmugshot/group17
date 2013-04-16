@@ -63,14 +63,13 @@ body{
 	padding-left: 10px;
 }
 
-.namecard h1{
+.namecard h3{
 	color: red;
-	outline: #00FF00 dotted thick;
 }
 
 .namecard_name {
 	width:279px;
-	position: absolute;
+	position: relative;
 	top: 194px;
 	border: 1px solid red; 
 }
