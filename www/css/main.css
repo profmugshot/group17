@@ -28,11 +28,18 @@ body{
 .namecard{
 	width: 300px;
 	float: left;
-
+	overflow: hidden;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
+	-moz-box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
+	box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
+	
 }
 
 .namecard_img{
-	width: 250px;
+	width: 200px;
+	margin: 0 auto;
 
 }
 
