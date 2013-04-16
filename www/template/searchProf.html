@@ -7,15 +7,17 @@
 					<img class="img-polaroid" src={{card[3]}} /><br />
 				</div>
 				<div class="namecard_info">
-					Name: {{card[1]}}<br />
+					<h1>{{card[1]}}</h1><br />
 					Profile: <a href="{{card[5]}}">{{card[5]}}</a><br />
 					Website: <a href="{{card[6]}}">{{card[6]}}</a><br />
 					Contact: {{card[7].replace(";","<br/>")}}
 				</div>
 				
-				<a class="btn" href="#">View More</a>
+				<div class="namecard_buttons">
+					<a class="btn" href="#">View More</a>
+				</div>
 			</div>
-          
+        
         {% endfor %}
         <div class="clear"></div>
       </div>

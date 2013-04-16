@@ -58,3 +58,13 @@ body{
 	padding: 10px;
 
 }
+
+.namecard_buttons{
+	padding-left: 10px;
+}
+
+.namecard h1{
+	color: red;
+	outline-color: white;
+	outline-width: 2px;
+}
