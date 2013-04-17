@@ -39,7 +39,7 @@ def generate_cards(query):
     if debug: print "for each result fron db's professor, generate namecard..."
     return prof_db_lookup(prof_name)
 
-def test(query='jian pei'):
+def test(query):
     data = generate_cards(query)
     c = 0
     print "Remember to turn on the debug to see steps."
