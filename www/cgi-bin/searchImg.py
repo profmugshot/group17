@@ -52,3 +52,4 @@ else:
     'title': 'CS456 G17 Jinja2 - image',
     'query': label[1]
     }
+    print env.get_template('headerNavBar.html').render(var)
