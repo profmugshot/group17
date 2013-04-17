@@ -136,8 +136,7 @@ var = {
     'query': querys[0],
     'prof': tokenDocList,
 	'rows': rows,
-    'results': result,
-    'resultLen':len(result)
+    'results': result
     }
 
 ##
