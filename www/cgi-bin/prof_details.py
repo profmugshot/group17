@@ -73,10 +73,12 @@ db.commit()
 tokenList = cur.fetchall()
 tokenDocList.append(tokenList)
 
-prof_name = str(tokenList[0][2])
 if(len(tokenList)<1):
     prof_name = "jian pei"
     prof_bad_id = 1
+else:
+    prof_name = str(tokenList[0][2])
+
 
 sql = '''
     select subject,number,section,title,instructor from courses where instructor like %s;
