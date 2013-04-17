@@ -102,3 +102,24 @@ body{
 
 
 }
+.namecard_3{
+	width: 500px;
+	/*height: 478px;*/
+	background: url('../img/trans.png') repeat;
+	float: left;
+	overflow: hidden;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 10px;
+	margin-top: 10px;
+	margin-left: 10px; 
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+
+	-webkit-box-shadow: 0 1px 11px rgba(78, 68, 60, 0.3);
+	-moz-box-shadow: 0 1px 11px rgba(78, 68, 60, 0.3);
+	box-shadow: 0 1px 11px rgba(78, 68, 60, 0.3);
+
+
+}
