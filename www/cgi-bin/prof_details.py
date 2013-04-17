@@ -87,13 +87,13 @@ if query:
             #cur.execute(sql, (token, url[0]))
             cur.execute(sql, (token))
             db.commit()
-            rows = (cur.fetchall())
-            pos = [freqIndex[0] for freqIndex in rows] #get all positions of all indexes and store in pos
+            rows2 = (cur.fetchall())
+            pos = [freqIndex[0] for freqIndex in rows2] #get all positions of all indexes and store in pos
             posFreq = [len(freq.split(",")) for freq in pos] #split each positions into list and count them
             #print posFreq
 
             i=0
-            for doc in rows:
+            for doc in rows2:
                 try:
                     #if doc is in dictionary already, exception thrown if trying to access non-existing element
                     val = resultDic[doc[1]] #frequency for doc[1]
