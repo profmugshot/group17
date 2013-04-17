@@ -15,6 +15,7 @@ import namecard
 DEBUG = 0
 DO_RANK = 0
 FREQ_COUNT=True
+prof_bad_id = 0
 
 #mysql connector
 #--------------------------------------------
@@ -70,10 +71,12 @@ sql = 'select * from professors where prof_id=%s;'
 cur.execute(sql, querys[0])
 db.commit()
 tokenList = cur.fetchall()
-if(len(tokenList)<1): prof_name = "jian pei"
 tokenDocList.append(tokenList)
 
 prof_name = str(tokenList[0][2])
+if(len(tokenList)<1):
+    prof_name = "jian pei"
+    prof_bad_id = 1
 
 sql = '''
     select subject,number,section,title,instructor from courses where instructor like %s;
@@ -152,7 +155,8 @@ var = {
     'title': 'CS456 G17 Jinja2 - '+querys[0],
     'query': querys[0],
     'prof': tokenDocList,
-	'rows': rows,
+	'prof_bad_id': prof_bad_id,
+    'rows': rows,
     'results': result,
     'tokenList': tokenList
     }
