@@ -84,6 +84,7 @@ body{
 .namecard_2{
 	width: 500px;
 	/*height: 478px;*/
+	background-color: white;
 	float: left;
 	overflow: hidden;
 	padding-top: 20px;
