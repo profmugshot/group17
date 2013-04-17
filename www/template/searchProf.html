@@ -1,5 +1,3 @@
-  {{def removeNonAscii(s):return "".join(i for i in s if ord(i)<128)}}
-
   <div class="container">
   	<h2>Professor Search Results</h2>
       <div class="row">
@@ -15,7 +13,7 @@
 					</div>
 					Profile: <a href="{{card[5]}}">{{card[5]}}</a><br />
 					Website: <a href="{{card[6]}}">{{card[6]}}</a><br />
-					Contact: {{removeNonAscii(card[7]).replace(";","<br/>")}}
+					Contact: {{card[7].replace(";","<br/>")}}
 				</div>
 				
 				<div class="namecard_buttons">
