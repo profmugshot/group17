@@ -73,22 +73,9 @@ tokenList = cur.fetchall()
 tokenDocList.append(tokenList)
 
 #freq count
-query = tokenList
+query = tokenList[0][2].split(" ")
 result=[]
 if query:
-    for token in query:
-        sql = 'select docID from indexterms where terms=%s;'
-        cur.execute(sql, token)
-        db.commit()
-        tokenList = cur.fetchall()
-        tokenDocList.append(tokenList)
-
-    result = set(tokenDocList[0]).intersection(*tokenDocList)
-    result = list(result)
-    if DEBUG:
-        print "Length of result: %s" %len(result)
-        for i in result:
-            print i
     #freq count
     if FREQ_COUNT:
         resultDic={}
