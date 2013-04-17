@@ -70,6 +70,7 @@ sql = 'select * from professors where prof_id=%s;'
 cur.execute(sql, querys[0])
 db.commit()
 tokenList = cur.fetchall()
+if(len(tokenList)<1): prof_name = "jian pei"
 tokenDocList.append(tokenList)
 
 prof_name = str(tokenList[0][2])
