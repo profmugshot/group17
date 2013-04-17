@@ -77,10 +77,6 @@ body{
 	position: relative;
 	top: -21px;
 }
-
-.container-fluid{
-	background: url('../img/wallpaper-124413.png') no-repeat white;
-}
 .nice_bg{
-	background: url('../img/wallpaper-124413.png') no-repeat white;
+	background: url('../img/fcthm.png') repeat-y white;
 }
