@@ -157,7 +157,8 @@ var = {
     'query': querys[0],
     'prof': tokenDocList,
 	'rows': rows,
-    'results': result
+    'results': result,
+    'tokenList': tokenList
     }
 
 ##
