@@ -54,7 +54,13 @@ var = {
     'title': 'CS456 G17 Jinja2 - '+querys[0],
     'query': querys[0],
     }
-
+##
+# Render HTML...
+template = env.get_template('headerNavBar.html')
+print template.render(var)
+sys.stdout.flush()
+print env.get_template('searchProgress.html').render()
+sys.stdout.flush()
 ###
 #needs to clean the GET information, so that we only get int IDs
 
