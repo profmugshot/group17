@@ -107,7 +107,7 @@ if query:
                     resultDic.update( {doc[1]:posFreq[i]} ) #appends to ditionary
                 i = i + 1
         outputResultDic = {}
-        for docID in result:
+        for docID in resultDic:
             docID=docID[0]
             try: #if exist
                 val = resultDic[docID]
