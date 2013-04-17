@@ -82,6 +82,7 @@ if query:
         resultDic={}
         for token in query:
             #for url in result:
+            print "inside freq count: processing this token: " + token
             sql = "select pos, docID from indexterms where terms=%s;"
             #cur.execute(sql, (token, url[0]))
             cur.execute(sql, (token))
