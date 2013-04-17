@@ -72,6 +72,15 @@ db.commit()
 tokenList = cur.fetchall()
 tokenDocList.append(tokenList)
 
+prof_name = str(tokenList[0][2])
+
+sql = '''
+    select subject,number,section,title,instructor from courses where instructor like %s;
+    '''
+cur.execute(sql, prof_name )
+rows = cur.fetchall()
+db.commit()
+
 #freq count
 query = str(tokenList[0][1]).split(" ")
 print "THis is the query going in: " + query[0]
@@ -136,14 +145,7 @@ print result
 
 #print "this is the token list: " + str(tokenList[0][2])
 
-prof_name = str(tokenList[0][2])
 
-sql = '''
-	select subject,number,section,title,instructor from courses where instructor like %s;
-    '''
-cur.execute(sql, prof_name )
-rows = cur.fetchall()
-db.commit()
 
 
 ##
