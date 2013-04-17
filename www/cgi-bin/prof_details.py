@@ -40,7 +40,7 @@ env = jj.Environment(loader=jj.FileSystemLoader(path+'/template'))
 ##
 # Getting html form POST
 fs = cgi.FieldStorage()
-querys = fs.getlist("query")
+querys = fs.getlist("id")
 try:
     query = querys[0].split(" ")
 except:
