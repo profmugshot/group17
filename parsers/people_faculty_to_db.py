@@ -5,6 +5,8 @@ from urlparse import urljoin
 import MySQLdb
 debug = 0
 
+def removeNonAscii(s):return "".join(i for i in s if ord(i)<128)
+
 db = MySQLdb.connect(host="localhost", # your host, usually localhost
                      user="root", # your username
                      passwd="", # your password
@@ -70,8 +72,9 @@ for i in textimage:
         except:
             if debug: print "something went wrong with the contact links"
 
+
     if debug:print "db_prof_image: " +db_prof_image 
-    if debug:print "db_prof_name: "+db_prof_name
+    if debug:print "db_prof_name: "+removeNonAscii(db_prof_name)
     if debug:print "db_prof_course_search_name: " + db_prof_course_search_name
     if debug:print "db_prof_web_profile: " + db_prof_web_profile
     if debug:print "db_prof_homepage: " + db_prof_homepage
@@ -79,10 +82,10 @@ for i in textimage:
 
     sql = '''
         insert into professors (
-        prof_name, prof_course_search_name, prof_image, prof_web_profile, prof_homepage)
-         values (%s, %s, %s, %s, %s);
+        prof_name, prof_course_search_name, prof_image,prof_image_large, prof_web_profile, prof_homepage, prof_contact, prof_education, prof_research, prof_others)
+         values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
         '''
-    cur.execute(sql, (db_prof_name, db_prof_course_search_name, db_prof_image, db_prof_web_profile, db_prof_homepage) )
+    cur.execute(sql, (removeNonAscii(db_prof_name), db_prof_course_search_name, db_prof_image, "#", db_prof_web_profile, db_prof_homepage, "Not Available","Not Available","Not Available","Not Available") )
     db.commit()
 
 
