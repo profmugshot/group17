@@ -83,9 +83,10 @@ db.commit()
 
 
 #freq count
-query = str(prof_name).split(" ")
+query = str(tokenList[0][1]).split(" ")
 print "THis is the query going in: " + query[0]
 
+tokenDocList={}
 result=[]
 if query:
     for token in query:
