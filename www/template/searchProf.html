@@ -1,6 +1,7 @@
   <div class="container">
   	<h2>Professor Search Results</h2>
       <div class="row">
+      	{{counter = 0}}
         {% for card in namecards %}
           
             <div class="namecard">
@@ -20,6 +21,11 @@
 					<a class="btn" href="#">View More</a>
 				</div>
 			</div>
+			{% set counter = counter + 1 %}
+			{% if counter == 3 %}
+			{% print "<div class='clear'></div>" %}
+			{% set counter = 0 %}
+			{% endif %}
         {% endfor %}
         <div class="clear"></div>
       </div>
