@@ -73,7 +73,7 @@ tokenList = cur.fetchall()
 tokenDocList.append(tokenList)
 
 #freq count
-query = str(tokenList[0][2])
+query = tokenList
 result=[]
 if query:
     for token in query:
