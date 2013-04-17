@@ -15,6 +15,8 @@ def save(url,path=""):
     except:
         return -1 #bad url
     f = open(path+file_name, 'wb')
+    file_size_dl = 0
+    block_sz = 8192
     while True:
         buffer = u.read(block_sz)
         if not buffer:
