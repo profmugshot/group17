@@ -64,13 +64,10 @@ sys.stdout.flush()
 ###
 #needs to clean the GET information, so that we only get int IDs
 
-tokenDocList = []
-
 sql = 'select * from professors where prof_id=%s;'
 cur.execute(sql, querys[0])
 db.commit()
 tokenList = cur.fetchall()
-tokenDocList.append(tokenList)
 
 prof_name = str(tokenList[0][2])
 
@@ -81,8 +78,12 @@ cur.execute(sql, prof_name )
 rows = cur.fetchall()
 db.commit()
 
+
+
+
+
 #freq count
-query = str(tokenList[0][1]).split(" ")
+query = str(prof_name).split(" ")
 print "THis is the query going in: " + query[0]
 
 result=[]
