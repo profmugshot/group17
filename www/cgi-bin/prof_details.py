@@ -55,30 +55,14 @@ var = {
     'query': querys[0],
     }
 
-##
-# Render HTML...
-template = env.get_template('headerNavBar.html')
-print template.render(var)
-sys.stdout.flush()
-print env.get_template('searchProgress.html').render()
-sys.stdout.flush()
 
-##
-# Name Card Search Results
-#namecards = namecard.generate_cards(query)
-
-#print env.get_template('searchProf.html').render(namecards=namecards)
-sys.stdout.flush()
-
-##
-# Retrieving prof name from database
 tokenDocList = []
-for token in query:
-    sql = 'select prof_name from professors where prof_id=%s;'
-    cur.execute(sql, token)
-    db.commit()
-    tokenList = cur.fetchall()
-    tokenDocList.append(tokenList)
+
+sql = 'select * from professors where prof_id=%s;'
+cur.execute(sql, querys[0])
+db.commit()
+tokenList = cur.fetchall()
+tokenDocList.append(tokenList)
 
 #freq count
 if FREQ_COUNT: 
