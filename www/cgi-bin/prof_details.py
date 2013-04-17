@@ -137,6 +137,7 @@ var = {
     'prof': tokenDocList,
 	'rows': rows,
     'results': result
+    'resultLen':len(result),
     }
 
 ##

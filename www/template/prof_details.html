@@ -45,6 +45,16 @@
 		    <div class="namecard_3">
 		      <!--Body content-->
 		      <h2>SEARCHES ON THIS PROFESSOR</h2>
+
+				<div class="span4 alert {% if resultLen > 0 %} alert-info {% endif %}">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					{% if resultLen > 0 %}
+					  <strong>Done.</strong> We've retrieved {{resultLen}} results.
+					{% else %}
+					  <strong>Oooops!</strong> We found 0 result for your query :(
+					{% endif %}
+				</div>
+
 		      {% for result in results %}
 		      		{{result[0]}} <br />
 		      {% endfor %}
