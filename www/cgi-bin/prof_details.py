@@ -110,7 +110,7 @@ var = {
     'title': 'CS456 G17 Jinja2 - '+querys[0],
     'query': querys[0],
 
-    'resultLen':len(result),
+
     }
 
 ##
