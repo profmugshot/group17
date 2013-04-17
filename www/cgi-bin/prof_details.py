@@ -1,6 +1,6 @@
 #!/usr/bin/python2.7
 #!E:/Program Files (x86)/Python27/python.exe -u
-## Search
+## prof details
 
 import jinja2 as jj
 import os, sys
@@ -55,6 +55,8 @@ var = {
     'query': querys[0],
     }
 
+###
+#needs to clean the GET information, so that we only get int IDs
 
 tokenDocList = []
 
