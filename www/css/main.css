@@ -78,13 +78,13 @@ body{
 	top: -21px;
 }
 .nice_bg{
-	background: url('../img/fcthm.png') repeat-y white;
+	background: url('../img/fcthm.png') repeat white;
 }
 
 .namecard_2{
 	width: 500px;
 	/*height: 478px;*/
-	background-color: white;
+	background: url('../img/trans.png') repeat;
 	float: left;
 	overflow: hidden;
 	padding-top: 20px;

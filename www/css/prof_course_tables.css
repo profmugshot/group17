@@ -57,7 +57,7 @@ table tr:first-child th:last-child{
 	border-top-right-radius:3px;
 }
 table tr{
-	line-height: 2px;
+	line-height: 14px;
 	text-align: center;
 	padding-left:20px;
 }
