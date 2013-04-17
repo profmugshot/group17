@@ -75,8 +75,23 @@ tokenDocList.append(tokenList)
 #freq count
 query = str(tokenList[0][1]).split(" ")
 print "THis is the query going in: " + query[0]
+
 result=[]
 if query:
+    for token in query:
+        sql = 'select docID from indexterms where terms=%s;'
+        cur.execute(sql, token)
+        db.commit()
+        tokenList = cur.fetchall()
+        tokenDocList.append(tokenList)
+
+    result = set(tokenDocList[0]).intersection(*tokenDocList)
+    result = list(result)
+    if DEBUG:
+        print "Length of result: %s" %len(result)
+        for i in result:
+            print i
+
     #freq count
     if FREQ_COUNT:
         resultDic={}
@@ -107,7 +122,7 @@ if query:
                     resultDic.update( {doc[1]:posFreq[i]} ) #appends to ditionary
                 i = i + 1
         outputResultDic = {}
-        for docID in resultDic:
+        for docID in result:
             docID=docID[0]
             try: #if exist
                 val = resultDic[docID]
