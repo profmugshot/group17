@@ -106,7 +106,7 @@ if FREQ_COUNT:
 #print token
 #print result
 
-print "this is the token list: " + tokenList[0][0]
+print "this is the token list: " + str(tokenList[0][0])
 
 prof_name = "pei"
 
