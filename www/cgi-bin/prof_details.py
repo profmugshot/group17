@@ -114,7 +114,7 @@ if query:
                 #print 'something went wrong with freq ', docID
         result = sorted(outputResultDic.iteritems(), key=operator.itemgetter(1), reverse=True)
 
-#print result
+print result
 
 #print "this is the token list: " + str(tokenList[0][2])
 
