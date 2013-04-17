@@ -106,13 +106,33 @@ if FREQ_COUNT:
 #print token
 #print result
 
+print "this is the token list: " + tokenList
+
+prof_name = "pei"
+
+sql = '''
+	select subject,number,section,title,instructor from courses where instructor like %s;
+    '''
+cur.execute(sql, prof_name )
+rows = cur.fetchall()
+db.commit()
+
+if len(rows)<1:
+	cur.execute(sql, prof_name[0]+"%"+prof_name.split("%")[-1])
+	rows = cur.fetchall()
+	db.commit()
+if len(rows)<1:
+	cur.execute(sql, "%"+prof_name.split("%")[-1])
+	rows = cur.fetchall()
+	db.commit()
+
 ##
 # Constructing variables to pass to HTML	
 var = {
     'title': 'CS456 G17 Jinja2 - '+querys[0],
     'query': querys[0],
-    'prof': tokenDocList
-
+    'prof': tokenDocList,
+	'rows': 
     }
 
 ##

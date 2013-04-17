@@ -1,4 +1,17 @@
   <div class="container">
   	<h2>Professor: {{prof[0][0]}}</h2>
+	
+	
+	<table cellspaceing="0">
+    
+
+    <tr><th>Subject</th><th>Number</th><th>Section</th><th>Title</th><th>Instructor</th></tr>
+    {% for row in rows %}
+        <tr class="even">
+        <td>{{row[0]}}</td><td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td>
+        </tr>
+	{% endfor %}
+    </table>
+
       
   </div>
