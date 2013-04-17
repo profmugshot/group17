@@ -45,7 +45,7 @@ def read_images(path, sz=None):
                     if (sz is not None):
                         im = cv2.resize(im, sz)
                     X.append(np.asarray(im, dtype=np.uint8))
-                    y.append(filename)
+                    y.append(c)
                     lables[c]=filename
                 except IOError, (errno, strerror):
                     print "I/O error({0}): {1}".format(errno, strerror)
@@ -93,7 +93,7 @@ if __name__ == "__main__":
     #
     # model.predict is going to return the predicted label and
     # the associated confidence:
-    pre=cv2.imread("img/JianPei/JianPei.0.jpg", cv2.IMREAD_GRAYSCALE)
+    pre=cv2.imread("img/gregBacker/gregBacker.0.jpg", cv2.IMREAD_GRAYSCALE)
     n=-5
     prd=np.asarray(X[n])
     [p_label, p_confidence] = model.predict(pre)
