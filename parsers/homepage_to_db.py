@@ -78,7 +78,7 @@ for prof_web_profile in prof_web_profiles:
             prof_image_large=%s, prof_contact=%s, prof_education=%s, prof_research=%s, prof_others=%s
             where prof_name like %s;
             '''
-        cur.execute(sql, (db_prof_image, db_prof_contact, db_prof_education, db_prof_research,db_prof_others, db_prof_name[0]+"%"+db_prof_name.split("%")[-1]))
+        cur.execute(sql, (db_prof_image, db_prof_contact, db_prof_education, db_prof_research,db_prof_others, removeNonAscii(db_prof_name[0]+"%"+db_prof_name.split("%")[-1])))
     except:
         print "ERRORROOROROR:",sys.exc_info()[0]
     db.commit()
