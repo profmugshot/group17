@@ -117,14 +117,6 @@ cur.execute(sql, prof_name )
 rows = cur.fetchall()
 db.commit()
 
-if len(rows)<1:
-	cur.execute(sql, prof_name[0]+"%"+prof_name.split("%")[-1])
-	rows = cur.fetchall()
-	db.commit()
-if len(rows)<1:
-	cur.execute(sql, "%"+prof_name.split("%")[-1])
-	rows = cur.fetchall()
-	db.commit()
 
 ##
 # Constructing variables to pass to HTML	
@@ -132,7 +124,7 @@ var = {
     'title': 'CS456 G17 Jinja2 - '+querys[0],
     'query': querys[0],
     'prof': tokenDocList,
-	'rows': 
+	'rows': rows
     }
 
 ##
