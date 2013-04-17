@@ -13,38 +13,40 @@
 </head>
 <body class="pull-down5">
   <div class="container-fluid">
-  	<div class="row-fluid">
-	    <div class="span4">
-	      <!--Sidebar content-->
-	      	<img src={{prof[0][0][4]}} />
-	      	<br />
-			Professor: {{prof[0][0][1]}}
-			
-			Web Profile: {{prof[0][0][5]}}
-			Home Page: {{prof[0][0][6]}}
-			Contact: {{prof[0][0][6]}}
-			<br />
-			Education: {{prof[0][0][7]}}
-			Others: {{prof[0][0][8]}}
-			<br />
-			Courses Taught:<br />
-			<table cellspaceing="0">
-    
+  	<div class="nice_bg">
+	  	<div class="row-fluid">
+		    <div class="span4">
+		      <!--Sidebar content-->
+		      	<img src={{prof[0][0][4]}} />
+		      	<br />
+				Professor: {{prof[0][0][1]}}
+				
+				Web Profile: {{prof[0][0][5]}}
+				Home Page: {{prof[0][0][6]}}
+				Contact: {{prof[0][0][6]}}
+				<br />
+				Education: {{prof[0][0][7]}}
+				Others: {{prof[0][0][8]}}
+				<br />
+				Courses Taught:<br />
+				<table cellspaceing="0">
+	    
 
-			<tr><th>Subject</th><th>Number</th><th>Section</th><th>Title</th><th>Instructor</th></tr>
-			{% for row in rows %}
-			    <tr class="even">
-			    <td>{{row[0]}}</td><td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td>
-			    </tr>
-			{% endfor %}
-			</table>
-	    </div>
-	    <div class="span7">
-	      <!--Body content-->
-	      <h2>SEARCHES ON THIS PROFESSOR</h2>
-	      This is some stuff on the body..
-	    </div>
-  	</div>
+				<tr><th>Subject</th><th>Number</th><th>Section</th><th>Title</th><th>Instructor</th></tr>
+				{% for row in rows %}
+				    <tr class="even">
+				    <td>{{row[0]}}</td><td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td>
+				    </tr>
+				{% endfor %}
+				</table>
+		    </div>
+		    <div class="span7">
+		      <!--Body content-->
+		      <h2>SEARCHES ON THIS PROFESSOR</h2>
+		      This is some stuff on the body..
+		    </div>
+	  	</div>
+	</div>
 
   	
 	
