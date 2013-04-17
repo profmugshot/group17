@@ -12,20 +12,33 @@
     <link href="../css/bootstrap.icon-large.min.css" rel="stylesheet">
 </head>
 <body class="pull-down5">
-  <div class="container">
-  	<h2>Professor: {{prof[0][0]}}</h2>
-	
-	
-	<table cellspaceing="0">
+  <div class="container-fluid">
+  	<div class="row-fluid">
+	    <div class="span2">
+	      <!--Sidebar content-->
+			<h2>Professor: {{prof[0][0]}}</h2>
+			<table cellspaceing="0">
     
 
-    <tr><th>Subject</th><th>Number</th><th>Section</th><th>Title</th><th>Instructor</th></tr>
-    {% for row in rows %}
-        <tr class="even">
-        <td>{{row[0]}}</td><td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td>
-        </tr>
-	{% endfor %}
-    </table>
+			<tr><th>Subject</th><th>Number</th><th>Section</th><th>Title</th><th>Instructor</th></tr>
+			{% for row in rows %}
+			    <tr class="even">
+			    <td>{{row[0]}}</td><td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td>
+			    </tr>
+			{% endfor %}
+			</table>
+	    </div>
+	    <div class="span10">
+	      <!--Body content-->
+	      <h2>SEARCHES ON THIS PROFESSOR</h2>
+	      This is some stuff on the body..
+	    </div>
+  	</div>
+
+  	
+	
+	
+	
 
       
   </div>
