@@ -74,7 +74,7 @@ tokenDocList.append(tokenList)
 
 #freq count
 query = str(tokenList[0][1]).split(" ")
-print "THis is the query going in: " + query
+print "THis is the query going in: " + query[0]
 result=[]
 if query:
     #freq count
