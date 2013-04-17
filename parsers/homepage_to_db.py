@@ -62,7 +62,7 @@ for prof_web_profile in prof_web_profiles:
         
 
     if debug:print "db_prof_image: " +db_prof_image 
-    if debug:print "db_prof_name: "+db_prof_name
+    if debug:print "db_prof_name: "+removeNonAscii(db_prof_name)
     if debug:print "db_prof_contact: " + removeNonAscii(db_prof_contact)
     if debug:print "db_prof_education: " + removeNonAscii(db_prof_education)
     if debug:print "db_prof_research: " + removeNonAscii(db_prof_research)
