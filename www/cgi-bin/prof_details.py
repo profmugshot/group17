@@ -83,7 +83,6 @@ db.commit()
 
 #freq count
 query = str(tokenList[0][1]).split(" ")
-print "THis is the query going in: " + query[0]
 
 result=[]
 if query:
@@ -106,13 +105,11 @@ if query:
         resultDic={}
         for token in query:
             #for url in result:
-            print "inside freq count: processing this token: " + token + "<br />"
             sql = "select pos, docID from indexterms where terms=%s;"
             #cur.execute(sql, (token, url[0]))
             cur.execute(sql, (token))
             db.commit()
             rows2 = (cur.fetchall())
-            #print "printing rows2: " + rows2[0] +"<br />" 
 
             pos = [freqIndex[0] for freqIndex in rows2] #get all positions of all indexes and store in pos
             posFreq = [len(freq.split(",")) for freq in pos] #split each positions into list and count them
@@ -141,7 +138,7 @@ if query:
                 #print 'something went wrong with freq ', docID
         result = sorted(outputResultDic.iteritems(), key=operator.itemgetter(1), reverse=True)
 
-print result
+#print result
 
 #print "this is the token list: " + str(tokenList[0][2])
 
