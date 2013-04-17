@@ -74,7 +74,7 @@ tokenList = cur.fetchall()
 tokenDocList.append(tokenList)
 
 if(len(tokenList)<1):
-    prof_name = "jian pei"
+    prof_name = ["jian pei"]
     prof_bad_id = 1
 else:
     prof_name = str(tokenList[0][2])

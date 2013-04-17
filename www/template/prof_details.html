@@ -13,6 +13,12 @@
 </head>
 <body class="pull-down5">
   <div class="container-fluid">
+  	<div class="span4 alert {% if prof_bad_id > 0 %} alert-info {% endif %}">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {% if prof_bad_id > 0 %}
+              <strong>Oooops!</strong> Someone provided an ID that doesn't exist. Let's show you my professor :)
+            {% endif %}
+    </div>
   	  	<div class="nice_bg row-fluid">
 		    <div class="namecard_2">
 		      <!--Sidebar content-->
