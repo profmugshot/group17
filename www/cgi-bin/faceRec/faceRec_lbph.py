@@ -3,7 +3,7 @@ import sys
 import cv2
 import numpy as np
 import URLopen as uo
-import faceInit as fi
+import faceRec_init as fi
 
 def readLabel(csvPath):
     names = [line.strip().split(';') for line in open(csvPath)]
