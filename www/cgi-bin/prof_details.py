@@ -106,9 +106,9 @@ if FREQ_COUNT:
 #print token
 #print result
 
-print "this is the token list: " + str(tokenList[0][0])
+print "this is the token list: " + str(tokenList[0][2])
 
-prof_name = "pei"
+prof_name = str(tokenList[0][2])
 
 sql = '''
 	select subject,number,section,title,instructor from courses where instructor like %s;
