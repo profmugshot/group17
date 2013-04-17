@@ -109,13 +109,13 @@ if FREQ_COUNT:
 var = {
     'title': 'CS456 G17 Jinja2 - '+querys[0],
     'query': querys[0],
-
+    'prof': tokenDocList
 
     }
 
 ##
 # Render HTML...
 sys.stdout.flush()
-template = env.get_template('searchResult.html')
+template = env.get_template('prof_details.html')
 print template.render(var)
 print env.get_template('footer.html').render()
