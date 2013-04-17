@@ -11,6 +11,8 @@ db = MySQLdb.connect(host="localhost", # your host, usually localhost
                      db="storage") # name of the data base
 cur = db.cursor()
 
+def removeNonAscii(s):return "".join(i for i in s if ord(i)<128)
+
 def prof_db_lookup(prof_name):
     sql = '''
             select * from professors where prof_name like %s;
@@ -24,7 +26,7 @@ def parse_query(query):
     prof_name = ""
     rx = re.compile('\W+')
     prof_name=rx.sub('%'," ".join(query))
-    return "%"+prof_name+"%"
+    return "%"+removeNonAscii(prof_name)+"%"
 
 def generate_cards(query):
     if debug: print "I got query: " + query
