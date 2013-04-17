@@ -82,12 +82,14 @@ if query:
         resultDic={}
         for token in query:
             #for url in result:
-            print "inside freq count: processing this token: " + token
+            print "inside freq count: processing this token: " + token + "<br />"
             sql = "select pos, docID from indexterms where terms=%s;"
             #cur.execute(sql, (token, url[0]))
             cur.execute(sql, (token))
             db.commit()
             rows2 = (cur.fetchall())
+            print "printing rows2: " + rows2[0] +"<br />" 
+
             pos = [freqIndex[0] for freqIndex in rows2] #get all positions of all indexes and store in pos
             posFreq = [len(freq.split(",")) for freq in pos] #split each positions into list and count them
             #print posFreq
