@@ -109,7 +109,7 @@ if FREQ_COUNT:
 var = {
     'title': 'CS456 G17 Jinja2 - '+querys[0],
     'query': querys[0],
-    'results': result,
+
     'resultLen':len(result),
     }
 
