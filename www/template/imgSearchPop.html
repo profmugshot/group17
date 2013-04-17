@@ -1,16 +1,14 @@
 <div id="popup" class="modal hide fade" role="dialog">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>    
-    <h3>Image search</h3>
+    <h3>Image search<i class="icon-camera"></i></h3>
   </div>
 	<div class="modal-body">
 	  <p>Search using a photo of a professor.</p>
-	  <form name="searchImg" class="form-search" action="./searchImg.py" method="POST">
-	    <div class="input-append" style="width:80%">
-	      <span class="add-on">Image URL<i class="icon-camera"></i></span>
+	  <form name="searchImg" class="control-groug form-search input-prepend input-append" action="./searchImg.py" method="POST"style="width:70%">
+	      <span class="add-on">URL:</span>
 	      <input name="imgURL" type="text" class="search-query" style="width:100%">
-	      <button type="submit" class="btn btn-secondary">Search</button>
-	    </div>
+		  <button type="submit" class="btn">Search</button>
 	  </form>
 	</div>
 	<div class="modal-footer">
