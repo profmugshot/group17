@@ -113,7 +113,7 @@ if query:
 
             pos = [freqIndex[0] for freqIndex in rows2] #get all positions of all indexes and store in pos
             posFreq = [len(freq.split(",")) for freq in pos] #split each positions into list and count them
-            print posFreq
+            #print posFreq
 
             i=0
             for doc in rows2:
