@@ -68,7 +68,7 @@ sys.stdout.flush()
 #namecards = namecard.generate_cards(query)
 
 #print env.get_template('searchProf.html').render(namecards=namecards)
-#sys.stdout.flush()
+sys.stdout.flush()
 
 ##
 # Retrieving prof name from database
