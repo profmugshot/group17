@@ -14,7 +14,7 @@ import operator
 import namecard
 DEBUG = 0
 DO_RANK = 0
-FREQ_COUNT=True
+FREQ_COUNT=False
 
 #mysql connector
 #--------------------------------------------
