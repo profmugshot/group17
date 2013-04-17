@@ -22,19 +22,26 @@ path=os.path.dirname(path)
 env = jj.Environment(loader=jj.FileSystemLoader(path+'/template'))
 print "Content-type:text/html\r\n\r\n"
 ##
+# Constructing variables to pass to HTML
+var = {
+    'title': 'CS456 G17 Jinja2 - image',
+    }
+template = env.get_template('template.html')
+print template.render(var)
+
+##
 # Getting html form POST
 cgitb.enable()
 fs = cgi.FieldStorage()
+link=""
 try:
     link = fs.getlist("imgURL")[0]
 except:
-    print "Unexpected error:", sys.exc_info()[0]
+    if 0:print "Unexpected error:", sys.exc_info()[0]
 
-print rec.prepare_rec(uo.save(link,pathRec+'tmp_download/'))
-##
-# Constructing variables to pass to HTML
-# var = {
-#     'title': 'CS456 G17 Jinja2 - image',
-#     }
-# template = env.get_template('template.html')
-# print template.render(var)
+if not link or link[link.rfind('.')+1:] not in ['jpg','jpeg','png','gif']:
+    sys.stdout.write(env.get_template('imgSearch_typeError.html').render())
+    sys.stdout.flush()
+else:
+    tmp=uo.save(link,pathRec+'tmp_download/')
+    print rec.prepare_rec(tmp)

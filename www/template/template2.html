@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>{{title}}</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://github.com/downloads/markusslima/bootstrap-filestyle/bootstrap-filestyle-0.1.0.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <link href="../css/bootstrap.icon-large.min.css" rel="stylesheet">
+</head>
+<body class="pull-down5">
+<div class="container-fluid push-down-5">
+    <div class="row-fluid">
+      <div class="page-header text-center">
+        <h1> _Group 17</h1>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="text-center"> 
+        <form name="search" class="well well-small form-search" action="./search.py" method="POST">
+          <div class="input-append">
+            <input name="query" value="hellow" type="text" class="search-query">
+            <span class="add-on">
+              <div class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-camera"></i></a>
+                <ul class="dropdown-menu" role="dialog" aria-labelledby="dLabel">
+                  <h4>Search by image</h4>
+                  <p>Paste image URL</p>
+                  <form name="searchImg" class="form-search" action="#" method="POST">
+                    <input name="imgURL" type="text" class="search-query">
+                    <button type="submit" class="btn btn-primary" data-loading-text="Uploading...">Upload</button>
+                  </form>
+                </ul>
+              </div>
+            </span>
+            <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+</div>
+</body>
+</html>

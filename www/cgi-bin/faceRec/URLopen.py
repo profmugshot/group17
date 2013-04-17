@@ -4,13 +4,22 @@ showProg=0
 def read(url):
     return urllib2.urlopen(url).read()
 
+## return:
+##  file path
+##  -1:bad url
+##  -2:file larger than 1M
 def save(url,path=""):
     file_name = url.split('/')[-1]
-    u = urllib2.urlopen(url)
+    try:
+        u = urllib2.urlopen(url)
+    except:
+        return -1 #bad url
     f = open(path+file_name, 'wb')
+    meta = u.info()
+    file_size = int(meta.getheaders("Content-Length")[0])
+    if file_size>1000000:
+        return -2
     if showProg:
-        meta = u.info()
-        file_size = int(meta.getheaders("Content-Length")[0])
         print "Downloading: %s Bytes: %s" % (file_name, file_size)
 
     file_size_dl = 0
