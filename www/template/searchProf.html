@@ -13,7 +13,7 @@
 					</div>
 					Profile: <a href="{{card[5]}}">{{card[5]}}</a><br />
 					Website: <a href="{{card[6]}}">{{card[6]}}</a><br />
-					Contact: {{("".join(i for i in card[7] if ord(i)<128)).replace(";","<br/>")}}
+					Contact: {{card[7].replace(";","<br/>")}}
 				</div>
 				
 				<div class="namecard_buttons">
