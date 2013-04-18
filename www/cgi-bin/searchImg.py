@@ -44,17 +44,12 @@ else:
     tmp=uo.save(link,pathRec+'tmp_download/')
     label =rec.prepare_rec(tmp)
     if label is not None:
-        ##
-        # Constructing variables to pass to HTML
-        var = {
-            'title': 'CS456 G17 Jinja2 - image',
-            'query': label[1]
+        var['query'] = label[1]
         }
-    else:
+    elif label == -1:
+        var['query'] = "The URL could not be succesfully downloaded..."
 
-        var = {
-            'title': 'CS456 G17 Jinja2 - image',
-            'query': "This image did not match anyone..."
-        }
+    else:
+        var['query'] = "This image did not match anyone..."
     print env.get_template('template.html').render(var)
     print env.get_template('footer.html').render()
