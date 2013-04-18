@@ -6,33 +6,44 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://github.com/downloads/markusslima/bootstrap-filestyle/bootstrap-filestyle-0.1.0.js"></script>
     <script src="../js/bootstrap.js"></script>
-    <script src="../js/jquery-1.4.3.js"></script>
+    <script src="../js/jquery.innerfade.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
     <link href="../css/bootstrap.icon-large.min.css" rel="stylesheet">
 
     <script type="text/javascript">
-      var fadeDuration=2000;
-      var slideDuration=4000;
-      var currentIndex=1;
-      var nextIndex=1;
-      $(document).ready(function()
-      {
-        $('ul.slideshow li img').corner();
-        $('ul.slideshow li').css({opacity: 0.0});
-        $("'ul.slideshow li:nth-child("+nextIndex+")'").addClass('show').animate({opacity: 1.0}, fadeDuration);
-        var timer = setInterval('nextSlide()',slideDuration);
-      })
-      function nextSlide(){
-          nextIndex =currentIndex+1;
-          if(nextIndex > $('ul.slideshow li').length)
-          {
-            nextIndex =1;
-          }
-          $("'ul.slideshow li:nth-child("+nextIndex+")'").addClass('show').animate({opacity: 1.0}, fadeDuration);
-          $("'ul.slideshow li:nth-child("+currentIndex+")'").animate({opacity: 0.0}, fadeDuration).removeClass('show');
-          currentIndex = nextIndex;
-      }
+     $(document).ready(
+        function(){
+          $('#news').innerfade({
+            animationtype: 'slide',
+            speed: 750,
+            timeout: 2000,
+            type: 'random',
+            containerheight: '1em'
+          });
+          
+          $('ul#portfolio').innerfade({
+            speed: 1000,
+            timeout: 5000,
+            type: 'sequence',
+            containerheight: '220px'
+          });
+          
+          $('.fade').innerfade({
+            speed: 1000,
+            timeout: 6000,
+            type: 'random_start',
+            containerheight: '1.5em'
+          });
+          
+          $('.adi').innerfade({
+            speed: 'slow',
+            timeout: 5000,
+            type: 'random',
+            containerheight: '150px'
+          });
+
+      });
     </script>
 
 
@@ -64,6 +75,24 @@
         <li> <img style="opacity: 0;" src="../img/image3.png" width="647" height="106" /> </li>
         <li> <img style="opacity: 0;" src="../img/image4.png" width="647" height="106" /> </li>
   </ul>
+
+  <ul id="portfolio">         
+          <li>
+            <a href="http://medienfreunde.com/deutsch/referenzen/kreation/good_guy__bad_guy.html"><img src="../img/image1.png" alt="Good Guy bad Guy" /></a>
+          </li>
+          <li>
+            <a href="http://medienfreunde.com/deutsch/referenzen/kreation/whizzkids.html"><img src="../img/image2.png" alt="Whizzkids" /></a>
+          </li>         
+          <li>
+            <a href="http://medienfreunde.com/deutsch/referenzen/printdesign/koenigin_mutter.html"><img src="../img/image3.png" alt="Königin Mutter" /></a>
+          </li>         
+          <li>
+            <a href="http://medienfreunde.com/deutsch/referenzen/webdesign/rt_reprotechnik_-_hybride_archivierung.html"><img src="../img/image4.png" alt="RT Hybride Archivierung" /></a>
+          </li>   
+          <li>
+            <a href="http://medienfreunde.com/deutsch/referenzen/kommunikation/tuev_sued_gruppe.html"><img src="../img/image6.png" alt="TÜV SÜD Gruppe" /></a>
+          </li>       
+        </ul>
 
 
 <div class="container push-down-5">
