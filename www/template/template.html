@@ -75,7 +75,7 @@
 <div class="container push-down-5">
     <div class="row">
       <div class="page-header text-center">
-        <h1> _ Group 17 _</h1>
+        <h1><a href="./jinja.cgi">_ Group 17 _</a></h1>
         <h4>Professor and Geneal SFU Search Engine</h4>
       </div>
     </div>
@@ -83,7 +83,7 @@
       <div class="text-center"> 
         <form name="search" class="well-small form-search" action="./search.py" method="POST">
           <div class="input-append">
-            <input name="query" value="{{query|defalt("Jian Pei - Search enging")}}" type="text" class="search-query">
+            <input name="query" value="{{query|default("Jian Pei - Search enging")}}" type="text" class="search-query">
             <span class="add-on"><a href="#popup" role="button" data-toggle="modal"><i class="icon-camera"></i></a></span>
             <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i></button>
           </div>
