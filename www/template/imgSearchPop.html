@@ -10,10 +10,17 @@
 	      <input name="imgURL" type="text" class="search-query" style="width:100%">
 		  <button type="submit" class="btn">Search</button>
 	  </form>
-	  <p class="info">Image needs to be in these formats: <code class="warning">.jpg .jpeg .gif .png</code></p>
+	  <p class="info">Image needs to be in these formats: <code class="warning">.jpg .jpeg .gif .png</code></p><small class="warning">Due to limited image database, result may be inaccurate.</small>
 	  
 	</div>
 	<div class="modal-footer">
-	  <p>Due to limited image database, result may be inaccurate.</p>
+	  <p class="info">Try these examples...</p>
+	  <ul class="thumbnails">
+	  	{%for i in range(8)%}
+	  	<li class="span4">
+	      <img data-src="../img/person/({{i}}).jpg" alt="">
+	  	</li>
+	  	{%endfor%}
+	  </ul>
 	</div>
 </div>
