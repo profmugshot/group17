@@ -85,7 +85,7 @@ else:
 
 
 sql = '''
-    select subject,number,section,title,instructor from courses where instructor like %s;
+    select * from courses where instructor like %s;
     '''
 cur.execute(sql, prof_name )
 rows = cur.fetchall()
