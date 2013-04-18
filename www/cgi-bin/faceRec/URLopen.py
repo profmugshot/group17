@@ -1,7 +1,7 @@
 import urllib2
 import sys
 showProg=0
-debug = 1
+debug = 0
 def read(url):
     return urllib2.urlopen(url).read()
 
