@@ -45,7 +45,7 @@
         		'animationtype':    'fade',
             'speed':            'normal',
             'type':             'sequence',
-            'timeout':          2000,
+            'timeout':          1000,
             'containerheight':  'auto',
             'runningclass':     'innerfade',
             'children':         null
