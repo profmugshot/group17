@@ -1,4 +1,5 @@
 import urllib2
+import sys
 showProg=0
 debug = 1
 def read(url):

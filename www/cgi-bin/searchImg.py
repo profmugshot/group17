@@ -27,22 +27,22 @@ print "Content-type:text/html\r\n\r\n"
 cgitb.enable()
 fs = cgi.FieldStorage()
 link=""
+var = {'title': 'CS456 G17 Jinja2'}
+
 try:
     link = fs.getlist("imgURL")[0]
 except:
     if 0:print "Unexpected error:", sys.exc_info()[0]
 
-
 if not link or link[link.rfind('.')+1:] not in ['jpg','jpeg','png','gif']:
     ##
     # Constructing variables to pass to HTML
-    var = {'title': 'CS456 G17 Jinja2',}
     print env.get_template('template.html').render(var)
     sys.stdout.write(env.get_template('imgSearch_typeError.html').render())
     sys.stdout.flush()
 else:
     tmp=uo.save(link,pathRec+'tmp_download/')
-    if tmp = -1:
+    if tmp == -1:
         var['query'] = "The URL could not be succesfully downloaded..."
     else:
         label =rec.prepare_rec(tmp)
