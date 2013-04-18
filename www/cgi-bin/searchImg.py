@@ -32,24 +32,22 @@ try:
 except:
     if 0:print "Unexpected error:", sys.exc_info()[0]
 
-##
-# Constructing variables to pass to HTML
-var = {
-    'title': 'CS456 G17 Jinja2 - image',
-    }
-template = env.get_template('template.html')
-print template.render(var)
 
 if not link or link[link.rfind('.')+1:] not in ['jpg','jpeg','png','gif']:
+    ##
+    # Constructing variables to pass to HTML
+    var = {'title': 'CS456 G17 Jinja2',}
+    print env.get_template('template.html').render(var)
     sys.stdout.write(env.get_template('imgSearch_typeError.html').render())
     sys.stdout.flush()
 else:
     tmp=uo.save(link,pathRec+'tmp_download/')
     label =rec.prepare_rec(tmp)
-    print label
-
+    ##
+    # Constructing variables to pass to HTML
     var = {
-    'title': 'CS456 G17 Jinja2 - image',
-    'query': label[1]
+        'title': 'CS456 G17 Jinja2 - image',
+        'query': label[1]
     }
-    print env.get_template('headerNavBar.html').render(var)
+    print env.get_template('template.html').render(var)
+    print env.get_template('footer.html').render()
