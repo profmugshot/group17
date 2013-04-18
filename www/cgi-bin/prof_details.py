@@ -66,6 +66,10 @@ sys.stdout.flush()
 #needs to clean the GET information, so that we only get int IDs
 
 tokenDocList = []
+if querys[0]>56 or querys[0]<1:
+    prof_bad_id = 1
+    querys[0] = 40
+
 
 sql = 'select * from professors where prof_id=%s;'
 cur.execute(sql, querys[0])
