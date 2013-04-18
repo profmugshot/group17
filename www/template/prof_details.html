@@ -21,53 +21,55 @@
             {% endif %}
     {% endif %}
     </div>
-  	  	<div class="holder">
-		    <div class="namecard_2">
-		      <!--Sidebar content-->
-		      	<img src={{prof[0][0][4]}} />
-		      	<br />
-				<b>Professor:</b> {{prof[0][0][1]}}
-				<br /><br />
-				<b>Web Profile:</b> <a href="{{prof[0][0][5]}}">{{prof[0][0][5]}}</a>
-				<br /><br />
-				<b>Home Page:</b> <a href="{{prof[0][0][6]}}">{{prof[0][0][6]}}</a>
-				<br /><br />
-				<b>Contact:</b> {{prof[0][0][7].replace(";","<br/>")}}
-				<br /><br />
-				<b>Education:</b> {{prof[0][0][8]}}
-				<br /><br />
-				<b>Others:</b> {{prof[0][0][9]}}
-				<br /><br />
-				<b>Courses Taught:</b><br />
-				<table cellspaceing="0">
-	    
-
-				<tr><th>Subject</th><th>Number</th><th>Section</th><th>Title</th><th>Term</th><th>Outline</th></tr>
-				{% for row in rows %}
-				    <tr class="even">
-				    <td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[8]}}</td><td><a href="{{row[7]}}">{% if row[7] %}Outline {% endif %}</a></td>
-				    </tr>
-				{% endfor %}
-				</table>
-		    </div>
-		    <div class="namecard_3">
-		      <!--Body content-->
-		      <h2>SEARCHES ON THIS PROFESSOR</h2>
+	<div class="holder">
+		<div class="namecard_2">
+		<!--Sidebar content-->
+		<img src={{prof[0][0][4]}} />
+		<br />
+		<b>Professor:</b> {{prof[0][0][1]}}
+		<br /><br />
+		<b>Web Profile:</b> <a href="{{prof[0][0][5]}}">{{prof[0][0][5]}}</a>
+		<br /><br />
+		<b>Home Page:</b> <a href="{{prof[0][0][6]}}">{{prof[0][0][6]}}</a>
+		<br /><br />
+		<b>Contact:</b> {{prof[0][0][7].replace(";","<br/>")}}
+		<br /><br />
+		<b>Education:</b> {{prof[0][0][8]}}
+		<br /><br />
+		<b>Others:</b> {{prof[0][0][9]}}
+		<br /><br />
+		<b>Courses Taught:</b><br />
+		<table cellspaceing="0">
 
 
-		      {% for result in tokenList %}
-		      		<a href="{{result[0]}}">{{result[0]}}</a> <br /><br />
-		      {% endfor %}
-		    </div>
-		    <div class="clear"></div>
-	  	</div>
+		<tr><th>Subject</th><th>Number</th><th>Section</th><th>Title</th><th>Term</th><th>Outline</th></tr>
+		{% for row in rows %}
+		<tr class="even">
+		<td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[8]}}</td><td><a href="{{row[7]}}">{% if row[7] %}Outline {% endif %}</a></td>
+		</tr>
+		{% endfor %}
+		</table>
+		</div>
+
+
+		<div class="namecard_3">
+		<!--Body content-->
+		<h2>SEARCHES ON THIS PROFESSOR</h2>
+
+
+		{% for result in tokenList %}
+			<a href="{{result[0]}}">{{result[0]}}</a> <br /><br />
+		{% endfor %}
+		</div>
+
+		<div class="clear"></div>
+	</div>
   	
 	</div>
 	
 	
 
       
-  </div>
 
 </body>
 </html>
