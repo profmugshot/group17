@@ -88,7 +88,10 @@ rows = cur.fetchall()
 db.commit()
 
 #freq count
-query = str(tokenList[0][1]).split(" ")
+if prof_bad_id:
+    query = ["jian pei"]
+else:
+    query = str(tokenList[0][1]).split(" ")
 
 result=[]
 if query:
