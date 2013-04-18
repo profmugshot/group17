@@ -68,7 +68,7 @@ sys.stdout.flush()
 tokenDocList = []
 if querys[0]>56 or querys[0]<1:
     prof_bad_id = 1
-    querys[0] = 40
+    querys[0] = "40"
 
 
 sql = 'select * from professors where prof_id=%s;'
