@@ -8,7 +8,7 @@
 	  <form name="searchImg" class="control-groug form-search input-prepend input-append" action="./searchImg.py" method="POST"style="width:70%">
 	      <span class="add-on">URL:</span>
 	      <input name="imgURL" type="text" class="search-query" style="width:100%">
-		  <button type="submit" class="btn" data-loading-text="Calculating...">Search</button>
+		  <button id="imgSerchBtn"type="submit" class="btn" data-loading-text="Calculating...">Search</button>
 	  </form>
 	  <p class="info">Image needs to be in these formats: <code class="warning">.jpg .jpeg .gif .png</code></p><small class="warning">Due to limited image database, result may be inaccurate.</small>
 	  
@@ -26,3 +26,13 @@
 	  </ul>
 	</div>
 </div>
+<script type="text/javascript">
+$('#imgSerchBtn')
+    .click(function () {
+        var btn = $(this)
+        btn.button('loading')
+        setTimeout(function () {
+            btn.button('reset')
+        }, 3000)
+    });
+</script>
