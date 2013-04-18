@@ -15,16 +15,12 @@
     <script type="text/javascript">
      $(document).ready(
         function(){
-          
           $('ul#portfolio').innerfade({
             speed: 1000,
             timeout: 5000,
             type: 'sequence',
             containerheight: '220px'
           });
-          
-        
-
       });
     </script>
     <style>
@@ -79,10 +75,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="text-center"> 
+      <div class="text-center span" > 
         <form name="search" class="well-small form-search" action="./search.py" method="POST">
-          <div class="input-append">
-            <input name="query" placeholder="{{query|default("Search something... e.g. Jian Pei; Computer Vision...")}}" type="text" class="search-query">
+          <div class="input-append" style="width:60%">
+            <input name="query" placeholder="{{query|default("Search something... e.g. Jian Pei; Computer Vision...")}}" type="text" class="search-query" style="width:60%">
             <span class="add-on"><a href="#popup" role="button" data-toggle="modal"><i class="icon-camera"></i></a></span>
             <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i></button>
           </div>
