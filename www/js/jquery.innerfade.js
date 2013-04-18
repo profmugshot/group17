@@ -43,9 +43,9 @@
     $.innerfade = function(container, options) {
         var settings = {
         		'animationtype':    'fade',
-            'speed':            'normal',
+            'speed':            'fast',
             'type':             'sequence',
-            'timeout':          1000,
+            'timeout':          10,
             'containerheight':  'auto',
             'runningclass':     'innerfade',
             'children':         null
