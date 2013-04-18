@@ -82,7 +82,7 @@
       <div class="text-center"> 
         <form name="search" class="well-small form-search" action="./search.py" method="POST">
           <div class="input-append">
-            <input name="query" value="{{query|default("Professor Jian Pei")}}" type="text" class="search-query">
+            <input name="query" placeholder="{{query|default("Search something... e.g. Jian Pei; Computer Vision...")}}" type="text" class="search-query">
             <span class="add-on"><a href="#popup" role="button" data-toggle="modal"><i class="icon-camera"></i></a></span>
             <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i></button>
           </div>
