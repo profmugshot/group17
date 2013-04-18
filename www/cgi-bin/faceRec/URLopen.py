@@ -11,6 +11,7 @@ def read(url):
 ##  -2:file larger than 1M
 def save(url,path=""):
     file_name = url.split('/')[-1]
+    url=url.replace('http://cmpt456.csil.sfu.ca:8017','localhost')
     if debug:
         print "got url:%s"%(url)
         print "filename:%s"%(file_name)
