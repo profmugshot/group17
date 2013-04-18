@@ -42,10 +42,10 @@
 				<table cellspaceing="0">
 	    
 
-				<tr><th>Subject</th><th>Number</th><th>Section</th><th>Title</th></tr>
+				<tr><th>Subject</th><th>Number</th><th>Section</th><th>Title</th><th>Term</th></tr>
 				{% for row in rows %}
 				    <tr class="even">
-				    <td>{{row[0]}}</td><td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td>
+				    <td>{{row[0]}}</td><td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td><td>{{row[7]}}</td><td><a href="{{row[6]}}">Outline</a></td>
 				    </tr>
 				{% endfor %}
 				</table>
