@@ -10,14 +10,18 @@ def read(url):
 ##  -2:file larger than 1M
 def save(url,path=""):
     file_name = url.split('/')[-1]
-    if debug: print "got url:%s"%(url)
-    if debug: print "filename:%s"%(file_name)
+    if debug:
+        print "got url:%s"%(url)
+        print "filename:%s"%(file_name)
+        sys.stdout.flush()
     try:
         u = urllib2.urlopen(url)
     except:
         return -1 #bad url
     f = open(path+file_name, 'wb')
-    if debug: print "saveing to %s"%(path+file_name)
+    if debug:
+        print "saveing to %s"%(path+file_name)
+        sys.stdout.flush()
     file_size_dl = 0
     block_sz = 8192
     while True:
@@ -26,6 +30,8 @@ def save(url,path=""):
             break
         file_size_dl += len(buffer)
         f.write(buffer)
-    if debug: print "done."
+    if debug:
+        print "done."
+        sys.stdout.flush()
     f.close()
     return path+file_name

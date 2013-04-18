@@ -42,14 +42,13 @@ if not link or link[link.rfind('.')+1:] not in ['jpg','jpeg','png','gif']:
     sys.stdout.flush()
 else:
     tmp=uo.save(link,pathRec+'tmp_download/')
-    label =rec.prepare_rec(tmp)
-    if label is not None:
-        var['query'] = label[1]
-        }
-    elif label == -1:
+    if tmp = -1:
         var['query'] = "The URL could not be succesfully downloaded..."
-
     else:
-        var['query'] = "This image did not match anyone..."
+        label =rec.prepare_rec(tmp)
+        if label is not None:
+            var['query'] = label[1]
+        else:
+            var['query'] = "This image did not match anyone..."
     print env.get_template('template.html').render(var)
     print env.get_template('footer.html').render()

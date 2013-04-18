@@ -8,7 +8,7 @@
 	  <form name="searchImg" class="control-groug form-search input-prepend input-append" action="./searchImg.py" method="POST"style="width:70%">
 	      <span class="add-on">URL:</span>
 	      <input name="imgURL" type="text" class="search-query" style="width:100%">
-		  <button id="imgSerchBtn"type="submit" class="btn" data-loading-text="Matching...">Search</button>
+		  <button id="imgSerchBtn"type="submit" class="btn" data-loading-text="Loading...">Search</button>
 	  </form>
 	  <p class="info">Image needs to be in these formats: <code class="warning">.jpg .jpeg .gif .png</code></p><small class="warning">Due to limited image database, result may be inaccurate.</small>
 	  
@@ -19,7 +19,7 @@
 	  	{%for i in range(1,7)%}
 		  <li class="span1">
 	  	    <div class="thumbnail">
-		      <img data-src="holder.js/160x120" src="../img/person/{{i}}.jpg" alt="">
+		      <img data-src="holder.js/160x120" src="../img/person/{{i}}.jpg" alt="Copy and paste this URL to search">
 		  	</div>
 		  </li>
 	  	{%endfor%}
