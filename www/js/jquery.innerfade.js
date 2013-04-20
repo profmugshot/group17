@@ -44,7 +44,7 @@
         var settings = {
         		'animationtype':    'fade',
             'speed':            'fast',
-            'type':             'random',
+            'type':             'random_start',
             'timeout':          10,
             'containerheight':  'auto',
             'runningclass':     'innerfade',
